@@ -1,13 +1,4 @@
 # penbox
 A tool that has all the tools , penetration tester's repo 
-This tool contains categories : 
-# information gathering : 
-- sqlmap 
-- nmap 
+our hope is in the last version we will have evry script that a hacker needs :) 
 
-password attacks
-wireless attacks
-exploitation tools : 
-jboss-autopwn
-sniffing / spoofing
-# and it containt tools : 

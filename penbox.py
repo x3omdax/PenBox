@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 #
 #          All In One Tool For Penetration Testing 
 #           Authors : Fedy Wesleti , Mohamed Nour 

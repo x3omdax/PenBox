@@ -1,3 +1,4 @@
+#!/usr/bin/env python2.7
 #
 #          All In One Tool For Penetration Testing 
 #           Authors : Fedy Wesleti , Mohamed Nour 
@@ -17,28 +18,30 @@ no = set(['no','n'])
 
 #this is the big menu funtion 
 def menu():
-    print ' ########  ######## ##    ## ########   #######  ##     ## '
-    print ' ##     ## ##       ###   ## ##     ## ##     ##  ##   ##  '
-    print ' ##     ## ##       ####  ## ##     ## ##     ##   ## ##   '
-    print ' ########  ######   ## ## ## ########  ##     ##    ###    '
-    print ' ##        ##       ##  #### ##     ## ##     ##   ## ##   '
-    print ' ##        ##       ##   ### ##     ## ##     ##  ##   ##  '
-    print ' ##        ######## ##    ## ########   #######  ##     ##  v1.0  '
-    print '                                 Pentesting Tools Auto-Downloader '
-    print ''
-    print ' [+]       Coded BY Mohamed Nour & Fedy Weslety        [+] '
-    print ' [+]          FB/CEH.TN    ~~   FB/mohamed.zeus.0      [+] '
-    print ' [+]             Greetz To All Pentesters              [+] '
+    print """
+  ########  ######## ##    ## ########   #######  ##     ## 
+  ##     ## ##       ###   ## ##     ## ##     ##  ##   ##  
+  ##     ## ##       ####  ## ##     ## ##     ##   ## ##   
+  ########  ######   ## ## ## ########  ##     ##    ###    
+  ##        ##       ##  #### ##     ## ##     ##   ## ##   
+  ##        ##       ##   ### ##     ## ##     ##  ##   ##  
+  ##        ######## ##    ## ########   #######  ##     ##  v1.0  
+                                  Pentesting Tools Auto-Downloader 
+ 
+  [+]       Coded BY Mohamed Nour & Fedy Weslety        [+] 
+  [+]          FB/CEH.TN    ~~   FB/mohamed.zeus.0      [+] 
+  [+]             Greetz To All Pentesters              [+] 
 
-    print("")
-    print("Select from the menu:")
-    print("")
-    print("1 : Information Gathering")
-    print("2 : Password Attacks")
-    print("3 : Wireless Testing")
-    print("4 : Exploitation Tools")
-    print("5 : Sniffing & Spoofing")
-    print("6 : Exit ")
+Select from the menu:
+
+1 : Information Gathering
+2 : Password Attacks
+3 : Wireless Testing
+4 : Exploitation Tools
+5 : Sniffing & Spoofing
+6 : Exit
+
+"""
     choice = input("selet a number :")
     choice = int(choice)
     if choice == 1:

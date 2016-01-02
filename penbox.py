@@ -63,7 +63,7 @@ def nmap():
     print("this step will download and install nmap ")
     print("yes or no ")
     choice7 = raw_input()
-    if choice7 == "yes" :
+    if choice7 in yes :
         os.system("wget https://nmap.org/dist/nmap-7.01.tar.bz2")
         os.system("bzip2 -cd nmap-7.01.tar.bz2 | tar xvf -")
         os.system("cd nmap-7.01")
@@ -71,7 +71,7 @@ def nmap():
         os.system("make")
         os.system("su root")
         os.system("make install")
-    elif choice7 == "no" :
+    elif choice7 in no :
         info()
 ####################################
 #jboss-autopwn

@@ -45,15 +45,15 @@ Select from the menu:
     choice = input("selet a number :")
     choice = int(choice)
     if choice == 1:
-        print info()
+        info()
     elif choice == 2:
-        print passwd()
+        passwd()
     elif choice == 3:
-        print wire()
+        wire()
     elif choice == 4:
-        print exp()
+        exp()
     elif choice == 5:
-        print snif()
+        snif()
     elif choice == 99:
         os.system('clear'),sys.exit();
 #end of function
@@ -73,7 +73,7 @@ def nmap():
         os.system("su root")
         os.system("make install")
     elif choice7 ==0:
-        print info()
+        info()
 ####################################
 #jboss-autopwn
 def jboss():
@@ -90,7 +90,7 @@ def jboss():
     if choice9 ==1:
         os.system("git clone https://github.com/SpiderLabs/jboss-autopwn.git"),sys.exit();
     elif choice9 ==0:
-        os.system('clear');print exp()
+        os.system('clear'); exp()
 #sqlmap 
 def sqlmap():
     print (" this will install sqlmap ")
@@ -101,7 +101,7 @@ def sqlmap():
     if choice8 ==1:
         os.system("git clone https://github.com/sqlmapproject/sqlmap.git sqlmap-dev")
     elif choice8 ==0:
-        os.system('clear');print info()
+        os.system('clear'); info()
 
 #setoolkit 
 def setoolkit():
@@ -116,7 +116,7 @@ def setoolkit():
     if choiceset ==1:
         os.system("git clone https://github.com/trustedsec/social-engineer-toolkit.git");os.system("cd social-engineer-toolkit");os.system("python setup.py")
     if choiceset ==0:
-        os.system("clear");print info()
+        os.system("clear"); info()
 #cupp 
 def cupp():
     print("cupp is a password list generator ")
@@ -127,7 +127,7 @@ def cupp():
     if choicecupp ==1:
         os.system("git clone https://github.com/Mebus/cupp.git");os.system("cd cupp")
     elif choicecupp ==0:
-        os.system("clear");print passwd()
+        os.system("clear"); passwd()
 #ncrack 
 def ncrack():
     print("A Ruby interface to Ncrack, Network authentication cracking tool.")
@@ -138,7 +138,7 @@ def ncrack():
     if choicencrack==1:
         os.system("git clone https://github.com/sophsec/ruby-ncrack.git");os.system("cd ruby-ncrack");os.systemgem("install ruby-ncrack")
     elif choicencrack==0:
-        os.system("clear");print passwd()
+        os.system("clear"); passwd()
 #reaver
 def reaver():
     print("Reaver has been designed to be a robust and practical attack against Wi-Fi Protected Setup")
@@ -150,7 +150,7 @@ def reaver():
     if creaver==1:
         os.system("apt-get -y install build-essential libpcap-dev sqlite3 libsqlite3-dev aircrack-ng pixiewps");os.system("git clone https://github.com/t6x/reaver-wps-fork-t6x.git");os.system("cd reaver-wps-fork-t6x");os.system("cd src/");os.system("./configure");os.system("make")
     elif creaver==0:
-        os.system("clear");print wire()
+        os.system("clear"); wire()
 
 #####################################
 #information gathering function
@@ -161,12 +161,12 @@ def info():
     choice2 = input("selet a number :")
     choice2 = int(choice2)
     if choice2 ==1:
-        os.system('clear');print nmap()
+        os.system('clear'); nmap()
     if choice2 ==3:
-        os.system("clear");print setoolkit()
+        os.system("clear"); setoolkit()
 
     elif choice2 ==99:
-        os.system("clear");print menu()
+        os.system("clear"); menu()
 #end of menu 
 ##########################
 #password attacks menu 
@@ -177,11 +177,11 @@ def passwd():
     choice3 = input("selet a number :")
     choice3 = int(choice3)
     if choice3 ==1:
-     os.system("clear");print cupp()
+     os.system("clear"); cupp()
     elif choice3 ==2:
-        os.system("clear");print ncrack()
+        os.system("clear"); ncrack()
     elif choice3 ==99:
-        os.system("clear") ; print menu()
+        os.system("clear"); menu()
 #end of menu 
 ##########################
 #wireless attacks
@@ -193,7 +193,7 @@ def wire():
     if choice4 ==1:
      os.system("clear");reaver()
     elif choice4 ==99:
-        print menu()
+        menu()
 ##########################
 #exploitation tools
 def exp():
@@ -203,11 +203,11 @@ def exp():
     choice5 = input("selet a number :")
     choice5 = int(choice5)
     if choice5 ==2:
-        os.system("clear");print sqlmap()
+        os.system("clear"); sqlmap()
     if choice5 ==1:
-     os.system('clear');print jboss()
+     os.system('clear'); jboss()
     elif choice5 ==99:
-        print menu()
+        menu()
 ###########################
 #sniffing tools
 def snif():
@@ -216,16 +216,17 @@ def snif():
     choice6 = input("selet a number :")
     choice6 = int(choice6)
     if choice6 ==1:
-     os.system("clear") ; print setoolkit()
+     os.system("clear"); setoolkit()
     if choice6 ==99:
-       os.system("clear"); print menu()
+       os.system("clear"); menu()
 #end of menu 
 ##########################
   #Check user ID 
+
 if os.getuid() != 0:
         print("Are you root? Please execute as root")
-        exit()
-print menu() #show the main menu 
+        exit() 
+menu() #show the main menu 
     
     
     

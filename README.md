@@ -1,4 +1,4 @@
-# penbox
+# PenBox
 A tool that has all the tools , penetration tester's repo 
 our hope is in the last version we will have evry script that a hacker needs :)
 
@@ -14,3 +14,5 @@ version v1.0 :
 - fixed some errors 
 - optimised menus and submenus 
 
+# OS 
+- This Tool Only Works On Linux And OSx

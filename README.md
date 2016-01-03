@@ -7,3 +7,10 @@ our hope is in the last version we will have evry script that a hacker needs :)
 * Python 2
 * sudoer 
 
+# Versions
+
+version v1.0 : 
+- added some tools
+- fixed some errors 
+- optimised menus and submenus 
+

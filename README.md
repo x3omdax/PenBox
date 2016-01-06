@@ -1,5 +1,5 @@
 # PenBox
-A tool that has all the tools , penetration tester's repo 
+A Penetration Testing Framework , The Hacker's Repo 
 our hope is in the last version we will have evry script that a hacker needs :)
 #THIS TOOL IS ONLY FOR EDUCATIONAL PURPOSES ONLY 
 # Requirements
@@ -33,18 +33,18 @@ Drupal_Hacking :
 - 2) Linux ( root required ) 
 - 3) Windows ( not available "yet" )
 - Other_tools : 
-- -jboss-autopwn
---sqlmap
---Shellnoob
---Inurlbr
---nmap
---Setoolkit
--Port Scanning
--Host To IP
--Cupp
--Ncrack
--Reaver
--Ssltrip
+- jboss-autopwn
+- sqlmap
+- Shellnoob
+- Inurlbr
+- nmap
+- Setoolkit
+- Port Scanning
+- Host To IP
+- Cupp
+- Ncrack
+- Reaver
+- Ssltrip
 version v1.0 : 
 - added some tools
 - fixed some errors 

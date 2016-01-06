@@ -1,5 +1,5 @@
 The MIT License (MIT)
-
+THIS TOOL IS ONLY FOR EDUCATIONAL PURPOSES ONLY 
 Copyright (c) 2016 Fedy Wesleti
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

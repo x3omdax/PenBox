@@ -1,6 +1,7 @@
-# PenBox
+# PenBox [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/x3omdax)[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star)](https://github.com/x3omdax/PenBox/)[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()[![Facebook](https://img.shields.io/badge/Contact%20-Facebook-red.svg)](http://www.facebbok.com/CEH.TN) 
 A Penetration Testing Framework , The Hacker's Repo 
 our hope is in the last version we will have evry script that a hacker needs :)
+
 #THIS TOOL IS ONLY FOR EDUCATIONAL PURPOSES ONLY 
 # Requirements
 
@@ -8,6 +9,17 @@ our hope is in the last version we will have evry script that a hacker needs :)
 * sudoer 
 
 # Versions
+Version v1.2 : 
+* All Os Compatible : Windows , Linux , OSX 
+- pixiewps
+- commix
+* Web Hacking 
+- Drupal Hacking
+- Inurlbr
+- Wordpress & Joomla Scanner
+- Gravity Form Scanner
+- File Upload Checker
+- Wordpress Exploit Scanner
 Version v1.1 : 
 
 * Drupal_Hacking : 
@@ -50,5 +62,5 @@ version v1.0 :
 - fixed some errors 
 - optimised menus and submenus 
 
-# OS 
-- This Tool Only Works On Linux And OSx
+#OS 
+this tool will work on evry OS

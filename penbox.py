@@ -5,14 +5,25 @@
 #
 import sys
 import os
+import time
 import httplib
 import subprocess
 import re, urllib2
 import socket
 import urllib,sys,json
+import telnetlib
+import glob
+import random
+import Queue 
+import threading
+from getpass import getpass
 from commands import *
+from sys import argv
 from platform import system
 from urlparse import urlparse
+from xml.dom import minidom
+from optparse import OptionParser
+from time import sleep
 ########################## 
 #Variables
 yes = set(['yes','y', 'ye', 'Y'])
@@ -25,15 +36,13 @@ def logo():
   ########  ######   ## ## ## ########  ##     ##    ###    
   ##        ##       ##  #### ##     ## ##     ##   ## ##   
   ##        ##       ##   ### ##     ## ##     ##  ##   ##  
-  ##        ######## ##    ## ########   #######  ##     ##  v1.0  
-                                  Pentesting Tools Auto-Downloader 
+  ##        ######## ##    ## ########   #######  ##     ##  v1.2
+                                  A Penetration Testing Framework 
  
-  [+]       Coded BY Mohamed Nour & Fedy Weslety        [+] 
-  [+]          FB/CEH.TN    ~~   FB/mohamed.zeus.0      [+] 
+  [+]       Coded BY Fedy Wesleti & Mohamed Nour        [+] 
+  [+]                FB/CEH.TN   ~~ FB/mohamed.zeus.0   [+] 
   [+]             Greetz To All Pentesters              [+] 
 """
-##########################
-#this is the big menu funtion 
 def menu():
     print ("""
   ########  ######## ##    ## ########   #######  ##     ## 
@@ -42,11 +51,11 @@ def menu():
   ########  ######   ## ## ## ########  ##     ##    ###    
   ##        ##       ##  #### ##     ## ##     ##   ## ##   
   ##        ##       ##   ### ##     ## ##     ##  ##   ##  
-  ##        ######## ##    ## ########   #######  ##     ##  v1.0  
-                                  Pentesting Tools Auto-Downloader 
+  ##        ######## ##    ## ########   #######  ##     ##  v1.2 
+                                  A Penetration Testing Framework 
  
-  [+]       Coded BY Mohamed Nour & Fedy Weslety        [+] 
-  [+]          FB/CEH.TN    ~~   FB/mohamed.zeus.0      [+] 
+  [+]       Coded BY Fedy Wesleti & Mohamed Nour        [+] 
+  [+]                FB/CEH.TN   ~~ FB/mohamed.zeus.0   [+] 
   [+]             Greetz To All Pentesters              [+] 
 
     Select from the menu:
@@ -56,8 +65,8 @@ def menu():
     3 : Wireless Testing
     4 : Exploitation Tools
     5 : Sniffing & Spoofing
-    6 : Privat Tools
-    7 : Drupal Hacking
+    6 : Web Hacking 
+    7 : Privat Tools
     99 : Exit
 
     """)
@@ -74,30 +83,24 @@ def menu():
     elif choice == "5":
         snif()
     elif choice == "6":
-        tnn()
+        webhack()
     elif choice == "7":
-        maine()
+        tnn()
     elif choice == "99":
-        os.system('clear'),sys.exit();
+        clearScr(),sys.exit();
     elif choice == "":
         menu()
     else: 
         menu()
-##########################
-#Host 2 ip
 def h2ip():
     host = raw_input("Select A Host : ")
     ips = socket.gethostbyname(host)
     print(ips)
-##########################
-#ports
 def ports():
-    os.system("clear")
+    clearScr()
     target = raw_input('Select a Target IP :')
     os.system("nmap -O -Pn %s" % target) 
     sys.exit();
-##########################
-#inurlbr
 def ifinurl():
     print""" This Advanced search in search engines, enables analysis provided to exploit GET / POST capturing emails & urls, with an internal custom validation junction for each target / url found."""
     print('do you have Inurlbr installed ? ')
@@ -110,7 +113,57 @@ def ifinurl():
         menu()
     else: 
         menu()
-####################################
+def commix():
+    print ("Automated All-in-One OS Command Injection and Exploitation Tool.")
+    print ("usage : python commix.py --help")
+    choicecmx = raw_input("Continue: y/n :")
+    if choicecmx in yes:
+        os.system("git clone https://github.com/stasinopoulos/commix.git commix")
+    elif choicecmx in no:
+        os.system('clear'); info()        
+ 
+def pixiewps():
+    print"""Pixiewps is a tool written in C used to bruteforce offline the WPS pin exploiting the low or non-existing entropy of some Access Points, the so-called "pixie dust attack" discovered by Dominique Bongard in summer 2014. It is meant for educational purposes only
+    """
+    choicewps = raw_input("Continue ? Y/N : ")
+    if choicewps in yes :
+        os.system("git clone https://github.com/wiire/pixiewps.git") 
+        os.system(" cd pixiewps/src & make ")
+        os.system(" cd pixiewps/src & sudo make install")
+    if choicewps in no : 
+        menu() 
+    elif choicewps == "":
+        menu()
+    else: 
+        menu()
+def webhack():
+    print("1 : Drupal Hacking ")
+    print("2 : Inurlbr")
+    print("3 : Wordpress & Joomla Scanner")
+    print("4 : Gravity Form Scanner")
+    print("5 : File Upload Checker")
+    print("6 : Wordpress Exploit Scanner")
+    print("99 : Exit")
+    choiceweb = raw_input("Enter Your Choice : ")
+    if choiceweb == "1":
+        clearScr()
+        maine()
+    if choiceweb == "2":
+        clearScr(); ifinurl()
+    if choiceweb =='3':
+        clearScr(); wppjmla()
+    if choiceweb =="4":
+        clearScr(); gravity()
+    if choiceweb =="5":
+        clearScr(); sqlscan()
+    if choiceweb =="6":
+        clearScr(); wpminiscanner()
+    elif choiceweb =="99":
+        menu()
+    elif choiceweb == "":
+        menu()
+    else: 
+        menu() 
 def inurl():
     dork = raw_input("select a Dork:")
     output = raw_input("select a file to save :")
@@ -121,16 +174,13 @@ def inurl():
         menu()
     else: 
         menu()
-####################################
 def insinurl():
     os.system("git clone https://github.com/googleinurl/SCANNER-INURLBR.git")
     os.system("chmod +x SCANNER-INURLBR/inurlbr.php")
     os.system("apt-get install curl libcurl3 libcurl3-dev php5 php5-cli php5-curl")
     os.system("mv /SCANNER-INURLBR/inurbr.php inurlbr.php")
-    os.system("clear")
+    clearScr()
     inurl()
-####################################
-#nmap function 
 def nmap():
 
     choice7 = raw_input("continue ? Y / N : ")
@@ -147,8 +197,6 @@ def nmap():
         menu()
     else: 
         menu()
-####################################
-#jboss-autopwn
 def jboss():
     os.system('clear')
     print ("This JBoss script deploys a JSP shell on the target JBoss AS server. Once")
@@ -166,8 +214,6 @@ def jboss():
         menu()
     else: 
         menu()
-####################################
-#sqlmap 
 def sqlmap():
     print ("usage : python sqlmap.py -h")
     choice8 = raw_input("Continue: y/n :")
@@ -179,8 +225,6 @@ def sqlmap():
         menu()
     else: 
         menu()
-####################################
-#setoolkit 
 def setoolkit():
     print ("The Social-Engineer Toolkit is an open-source penetration testing framework")
     print(") designed for social engineering. SET has a number of custom attack vectors that ")
@@ -192,13 +236,11 @@ def setoolkit():
         os.system("git clone https://github.com/trustedsec/social-engineer-toolkit.git")
         os.system("python social-engineer-toolkit/setup.py")
     if choiceset in no:
-        os.system("clear"); info()
+        clearScr(); info()
     elif choiceset == "":
         menu()
     else: 
         menu()
-####################################
-#cupp 
 def cupp():
     print("cupp is a password list generator ")
     print("Usage: python cupp.py -h")
@@ -208,13 +250,11 @@ def cupp():
         os.system("git clone https://github.com/Mebus/cupp.git")
         print("file downloaded successfully")
     elif choicecupp in no:
-        os.system("clear"); passwd()
+        clearScr(); passwd()
     elif choicecupp == "":
         menu()
     else: 
         menu()
-####################################
-#ncrack 
 def ncrack():
     print("A Ruby interface to Ncrack, Network authentication cracking tool.")
     print("requires : nmap >= 0.3ALPHA / rprogram ~> 0.3")
@@ -225,13 +265,11 @@ def ncrack():
         os.system("cd ruby-ncrack")
         os.system("install ruby-ncrack")
     elif choicencrack in no:
-        os.system("clear"); passwd()
+        clearScr(); passwd()
     elif choicencrack == "":
         menu()
     else: 
         menu()
-####################################
-#reaver
 def reaver():
     print """
       Reaver has been designed to be a robust and practical attack against Wi-Fi Protected Setup
@@ -246,13 +284,11 @@ def reaver():
         os.system("cd reaver-wps-fork-t6x/src/ & ./configure")
         os.system("cd reaver-wps-fork-t6x/src/ & make")
     elif creaver in no:
-        os.system("clear"); wire()
+        clearScr(); wire()
     elif creaver == "":
         menu()
     else: 
         menu()
-####################################
-#sslstrip
 def ssls():
     print"""sslstrip is a MITM tool that implements Moxie Marlinspike's SSL stripping 
     attacks.
@@ -268,8 +304,55 @@ def ssls():
         menu()
     else:
         menu()
-####################################
-#shellnoob
+def unique(seq):
+        seen = set()
+        return [seen.add(x) or x for x in seq if x not in seen]
+def bing_all_grabber(s):
+        
+        lista = []
+        page = 1
+        while page <= 101:
+                try:
+                        bing = "http://www.bing.com/search?q=ip%3A" + s + "+&count=50&first=" + str(page)
+                        openbing = urllib2.urlopen(bing)
+                        readbing = openbing.read()
+                        findwebs = re.findall('<h2><a href="(.*?)"', readbing)
+                        for i in range(len(findwebs)):
+                                allnoclean = findwebs[i]
+                                findall1 = re.findall('http://(.*?)/', allnoclean)
+                                for idx, item in enumerate(findall1):
+                                        if 'www' not in item:
+                                                findall1[idx] = 'http://www.' + item + '/'
+                                        else:
+                                                findall1[idx] = 'http://' + item + '/'
+                                lista.extend(findall1)
+ 
+                        page += 50
+                except urllib2.URLError:
+                        pass
+ 
+        final = unique(lista)
+        return final
+def check_gravityforms(sites) :
+        import urllib
+        gravityforms = []
+        for site in sites :
+                try :
+                        if urllib.urlopen(site+'wp-content/plugins/gravityforms/gravityforms.php').getcode() == 403 :
+                                gravityforms.append(site)
+                except :
+                        pass
+ 
+        return gravityforms
+def gravity():
+    ip = raw_input('Enter IP : ')
+    sites = bing_all_grabber(str(ip))
+    gravityforms = check_gravityforms(sites)
+    for ss in gravityforms :
+            print ss
+     
+    print '\n'
+    print '[*] Found, ', len(gravityforms), ' gravityforms.'
 def shellnoob():
     print """Writing shellcodes has always been super fun, but some parts are extremely boring and error prone. Focus only on the fun part, and use ShellNoob!"""
     cshell = raw_input("Y / N : ")
@@ -283,8 +366,6 @@ def shellnoob():
         menu()
     else:
         menu()
-#####################################
-#information gathering function
 def info():
     print("1: nmap ")
     print("2: Setoolkit")
@@ -295,98 +376,90 @@ def info():
     if choice2 == "1":
         os.system('clear'); nmap()
     if choice2 == "2":
-        os.system("clear"); setoolkit()
+        clearScr(); setoolkit()
     if choice2 == "3":
-        os.system("clear"); ports()
+        clearScr(); ports()
     if choice2 == "4":
-        os.system("clear"); h2ip()
+        clearScr(); h2ip()
     elif choice2 =="99":
-        os.system("clear"); menu()
+        clearScr(); menu()
     elif choice2 == "":
         menu()
     else: 
         menu()
-##########################
 def priv8():
     tnn()
-#password attacks menu 
 def passwd():
     print("1:  cupp ")
     print("2:  Ncrack")
     print("99: Back To Main Menu")
     choice3 = raw_input("Select from the menu:")
     if choice3 =="1":
-     os.system("clear"); cupp()
+     clearScr(); cupp()
     elif choice3 =="2":
-        os.system("clear"); ncrack()
+        clearScr(); ncrack()
     elif choice3 =="99":
-        os.system("clear"); menu()
+        clearScr(); menu()
     elif choice3 == "":
         menu()
     else: 
         menu()
-##########################
-#wireless attacks
 def wire():
-    print("1:  reaver ")
+    print("1 : reaver ")
+    print("2 : pixiewps")
     print("99: Back To The Main Menu")
     choice4 = raw_input("Select from the menu:")
     if choice4 =="1":
-     os.system("clear");reaver()
+     clearScr();reaver()
+    if choice4 =="2":
+        clearScr(); pixiewps()
     elif choice4 =="99":
         menu()
     elif choice4 == "":
         menu()
     else: 
         menu()
-##########################
-#exploitation tools
 def exp():
     print("1 : jboss-autopwn ")
     print("2 : sqlmap")
     print("3 : Shellnoob")
-    print("4 : Inurlbr")
+    print("4 : commix")
     print("99 : Go Back To Main Menu")
     choice5 = raw_input("Select from the menu:")
     if choice5 =="2":
-        os.system("clear"); sqlmap()
+        clearScr(); sqlmap()
     if choice5 =="1":
      os.system('clear'); jboss()
     if choice5 =="3":
-        os.system("clear"); shellnoob()
-    if choice5 == "4":
-        os.system("clear"); ifinurl()
+        clearScr(); shellnoob()
+    if choice5 =="4":
+        os.system("clear"); commix()
     elif choice5 =="99":
         menu()
     elif choice5 == "":
         menu()
     else: 
         menu()
-###########################
-#sniffing tools
 def snif():
     print("1 : Setoolkit ")
     print("2 : Ssltrip")
     print("99: Back To Main Menu")
     choice6 = raw_input("Select from the menu:")
     if choice6 =="1":
-     os.system("clear"); setoolkit()
+     clearScr(); setoolkit()
     if choice6 =="2":
-        os.system("clear"); ssls()
+        clearScr(); ssls()
     if choice6 =="99":
-       os.system("clear"); menu()
+       clearScr(); menu()
     elif choice6 == "":
         menu()
     else: 
         menu()
-##########################
-#if Os is Windows 
 def win():
-    os.system("clear")
+    clearScr()
     print("Our Tool Does Not Support Windows , run it on linux or install a virtual machine ")
     sys.exit();
   #Check use OS
-##########################
 def OS():
     print(
     """
@@ -406,16 +479,12 @@ def OS():
         OS()
     else:
         sys.exit();
-############################
-#check root if linux 
 def root():
     if os.getuid() != 0:
         print("Are you root? Please execute as root")
         exit() 
     else:
         menu()
-#############################
-#priv8 menu 
 menuu = """
  1) Get all websites
  2) Get joomla websites
@@ -425,23 +494,18 @@ menuu = """
  6) Find upload files
  7) Get server users
  8) Scan from SQL injection
- 9) Crawl and scan from SQL injection
- 10) Scan ports (range of ports)
- 11) Scan ports (common ports)
- 12) Get server banner
- 13) Bypass Cloudflare
+ 9) Scan ports (range of ports)
+ 10) Scan ports (common ports)
+ 11) Get server banner
+ 12) Bypass Cloudflare
  99) Exit
 """
-#############################
-#grab function 
 def unique(seq):
     """
     get unique from list found it on stackoverflow
     """
     seen = set()
     return [seen.add(x) or x for x in seq if x not in seen]
-############################
-#clear screen function 
 def clearScr() :
     """
     clear the screen in case of GNU/Linux or 
@@ -451,7 +515,6 @@ def clearScr() :
         os.system('clear')
     if system() == 'Windows':
         os.system('cls')
-############################
 class TNscan : #TNscan Function menu 
     def __init__(self, serverip) :
         self.serverip = serverip
@@ -476,28 +539,22 @@ class TNscan : #TNscan Function menu
             elif choice == '8' :
                 self.grabSqli()
             elif choice == '9' :
-                nbpages = int(raw_input(' Enter number of pages to crawl (ex : 100) -> '))
-                self.crawlSqli(nbpages)
-            elif choice == '10' :
                 ran = raw_input(' Enter range of ports, (ex : 1-1000) -> ')
                 self.portScanner(1, ran)
-            elif choice == '11' :
+            elif choice == '10' :
                 self.portScanner(2, None)
-            elif choice == '12' :
+            elif choice == '11' :
                 self.getServerBanner()
-            elif choice == '13' :
+            elif choice == '12' :
                 self.cloudflareBypasser()
             elif choice == '99' :
-                print ' Goodbye'
-                exit()
+                menu()
             con = raw_input(' Continue [Y/n] -> ')
             if con[0].upper() == 'N' :
                 exit()
             else :
                 clearScr()
                 print menuu
-############################       
-#get websites from server
     def getSites(self, a) :
         """
         get all websites on same server
@@ -530,8 +587,6 @@ class TNscan : #TNscan Function menu
             print '[*] Found ', len(lista), ' Website\n'
             for site in self.sites :
                 print site 
-############################
-#get wordpress websites 
     def getWordpress(self) :
         """
         get wordpress site using a dork the attacker
@@ -559,8 +614,6 @@ class TNscan : #TNscan Function menu
         print '[*] Found ', len(lista), ' Wordpress Website\n'
         for site in lista :
             print site
-############################
-#get joomla websites
     def getJoomla(self) :
         """
         get all joomla websites using 
@@ -645,7 +698,7 @@ class TNscan : #TNscan Function menu
     def getUsers(self) :
         """
         get server users using a method found by 
-        iranian hackers i think, the attacker may
+        iranian hackers , the attacker may
         do a bruteforce attack on CPanel, ssh, ftp or 
         even mysql if it supports remote login
         (you can use medusa or hydra)
@@ -771,31 +824,10 @@ class TNscan : #TNscan Function menu
                                 print ' [*] SQLi found -> ', power
             except:
                 pass
- ############################   
- #craw SQL 
-    def crawlSqli(self, nbpages) :
-        """
-        simple crawling using chilkat (yeah chilkat sucks)
-        and scan for error based sql injection
-        [!] will be on the next version
-        """
-        import chilkat
-        spider = chilkat.CkSpider()
-        for url in self.sites :
-            spidred = []
-            print " [~] Crawling -> ", url
-            spider.Initialize(url)
-            #spider.unspideredUrl(url)
-            i = 0
-            for i in range(nbpages) :
-                if spider.CrawlNext() :
-                    spidred.append(spider.lastUrl())
-            print " [+] Crawled -> ", spidred
-            print " [~] Scanning -> ", url, " from SQL injection"
-            self.checkSqli(spidred)
-  ############################        
-  #scan for ports  
-    def portScanner(self, mode, ran) :
+############################   
+############################        
+#scan for ports  
+def portScanner(self, mode, ran) :
         """
         simple port scanner works with range of ports 
         or with common ports (al-swisre idea)
@@ -820,8 +852,6 @@ class TNscan : #TNscan Function menu
                 # didn't use multithreading cos it's few ports
                 do_it(self.serverip, port)
 ############################
-
-
 minu ='''
 \t 1: Drupal Bing Exploiter
 \t 2: Get Drupal Websites
@@ -870,7 +900,7 @@ def drupal():
 
             #Drupal Server ExtraCtor
 def getdrupal():
-    ip  = raw_input('2- Ip : ')
+    ip  = raw_input('Enter The Ip : ')
     page  = 1
     sites = list()
     while page <= 50 :
@@ -909,7 +939,6 @@ def drupallist():
                 print i + "=> exploit not found " 
         except Exception as ex :
             print ex
-
 def maine():
     
      print minu
@@ -932,8 +961,71 @@ def maine():
                                     exit()
       if con[0].upper() == 'Y' :
                                     maine()
-                                
+def unique(seq):
+    seen = set()
+    return [seen.add(x) or x for x in seq if x not in seen]
+def bing_all_grabber(s):
+    lista = []
+    page = 1
+    while page <= 101:
+        try:
+            bing = "http://www.bing.com/search?q=ip%3A" + s + "+&count=50&first=" + str(page)
+            openbing = urllib2.urlopen(bing)
+            readbing = openbing.read()
+            findwebs = re.findall('<h2><a href="(.*?)"', readbing)
+            for i in range(len(findwebs)):
+                allnoclean = findwebs[i]
+                findall1 = re.findall('http://(.*?)/', allnoclean)
+                for idx, item in enumerate(findall1):
+                    if 'www' not in item:
+                        findall1[idx] = 'http://www.' + item + '/'
+                    else:
+                        findall1[idx] = 'http://' + item + '/'
+                lista.extend(findall1)
 
+            page += 50
+        except urllib2.URLError:
+            pass
+
+    final = unique(lista)
+    return final
+def check_wordpress(sites) :
+    wp = []
+    for site in sites :
+        try :
+            if urllib2.urlopen(site+'wp-login.php').getcode() == 200 :
+                wp.append(site)
+        except :
+            pass
+
+    return wp
+def check_joomla(sites) :
+    joomla = []
+    for site in sites :
+        try :
+            if urllib2.urlopen(site+'administrator').getcode() == 200 :
+                joomla.append(site)
+        except :
+            pass
+
+    return joomla
+def wppjmla():
+    
+    ipp = raw_input('Enter Target IP: ')
+    sites = bing_all_grabber(str(ipp))
+    wordpress = check_wordpress(sites)
+    joomla = check_joomla(sites)
+    for ss in wordpress :
+        print ss
+    print '[+] Found ! ', len(wordpress), ' Wordpress Websites'
+    print '-'*30+'\n'
+    for ss in joomla :
+        print ss
+
+
+    print '[+] Found ! ', len(joomla), ' Joomla Websites'
+
+    print '\n'
 #initialise the tnscan function 
 class tnn():
     def __init__(self):
@@ -941,10 +1033,184 @@ class tnn():
         aaa = raw_input("Target IP : ")
         TNscan(aaa)
 ############################
+class bcolors:
+    HEADER = ''
+    OKBLUE = ''
+    OKGREEN = ''
+    WARNING = ''
+    FAIL = ''
+    ENDC = ''
+    CYAN = ''
+class colors():
+    PURPLE = ''
+    CYAN = ''
+    DARKCYAN = ''
+    BLUE = ''
+    GREEN = ''
+    YELLOW = ''
+    RED = ''
+    BOLD = ''
+    ENDC = ''
+def grabsqli(ip):
+    try :
+        print bcolors.OKBLUE  + "Check_Uplaod... "
+        print '\n'
+
+        page = 1
+        while page <= 21:
+                bing = "http://www.bing.com/search?q=ip%3A"+ip+"+upload&count=50&first="+str(page)
+                openbing  = urllib2.urlopen(bing)
+                readbing = openbing.read()
+                findwebs = re.findall('<h2><a href="(.*?)"' , readbing)
+                sites = findwebs
+                for i in sites :
+                            try :
+                                      response = urllib2.urlopen(i).read()                                   
+                                      checksqli(i)  
+                            except urllib2.HTTPError, e:
+                                       str(sites).strip(i)
+                                   
+                page = page + 10 
+    except : 
+         pass 
+def checksqli(sqli):
+                            responsetwo = urllib2.urlopen(sqli).read()
+                            find = re.findall('type="file"',responsetwo)
+                            if find:
+                                            print(" Found ==> " + sqli)
+def sqlscan():                                           
+    ip = raw_input('Enter IP : ')
+    grabsqli(ip)
+# found this code on stackoverflow.com/questions/19278877
+def unique(seq):
+    seen = set()
+    return [seen.add(x) or x for x in seq if x not in seen]
+def bing_all_grabber(s):
+    lista = []
+    page = 1
+    while page <= 101:
+        try:
+            bing = "http://www.bing.com/search?q=ip%3A" + s + "+&count=50&first=" + str(page)
+            openbing = urllib2.urlopen(bing)
+            readbing = openbing.read()
+            findwebs = re.findall('<h2><a href="(.*?)"', readbing)
+            for i in range(len(findwebs)):
+                allnoclean = findwebs[i]
+                findall1 = re.findall('http://(.*?)/', allnoclean)
+                for idx, item in enumerate(findall1):
+                    if 'www' not in item:
+                        findall1[idx] = 'http://www.' + item + '/'
+                    else:
+                        findall1[idx] = 'http://' + item + '/'
+                lista.extend(findall1)
+
+            page += 50
+        except urllib2.URLError:
+            pass
+
+    final = unique(lista)
+    return final
+def check_wordpress(sites) :
+    wp = []
+    for site in sites :
+        try :
+            if urllib2.urlopen(site+'wp-login.php').getcode() == 200 :
+                wp.append(site)
+        except :
+            pass
+
+    return wp
+def check_wpstorethemeremotefileupload(sites) :
+    wpstorethemeremotefileupload = []
+    for site in sites :
+        try :
+            if urllib2.urlopen(site+'wp-content/themes/WPStore/upload/index.php').getcode() == 200 :
+                wpstorethemeremotefileupload.append(site)
+        except :
+            pass
+
+    return wpstorethemeremotefileupload
+def check_wpcontactcreativeform(sites) :
+    wpcontactcreativeform = []
+    for site in sites :
+        try :
+            if urllib2.urlopen(site+'wp-content/plugins/sexy-contact-form/includes/fileupload/index.php').getcode() == 200 :
+                wpcontactcreativeform.append(site)
+        except :
+            pass
+
+    return wpcontactcreativeform
+def check_wplazyseoplugin(sites) :
+    wplazyseoplugin = []
+    for site in sites :
+        try :
+            if urllib2.urlopen(site+'wp-content/plugins/lazy-seo/lazyseo.php').getcode() == 200 :
+                wplazyseoplugin.append(site)
+        except :
+            pass
+
+    return wplazyseoplugin
+def check_wpeasyupload(sites) :
+    wpeasyupload = []
+    for site in sites :
+        try :
+            if urllib2.urlopen(site+'wp-content/plugins/easy-comment-uploads/upload-form.php').getcode() == 200 :
+                wpeasyupload.append(site)
+        except :
+            pass
+
+    return wpeasyupload
+def check_wpsymposium(sites) :
+    wpsymposium = []
+    for site in sites :
+        try :
+            if urllib2.urlopen(site+'wp-symposium/server/file_upload_form.php').getcode() == 200 :
+                wpsycmium.append(site)
+        except :
+            pass
+
+    return wpsymposium
+def wpminiscanner():
+    ip = raw_input('Enter IP : ')
+    sites = bing_all_grabber(str(ip))
+    wordpress = check_wordpress(sites)
+    wpstorethemeremotefileupload = check_wpstorethemeremotefileupload(sites)
+    wpcontactcreativeform = check_wpcontactcreativeform(sites)
+    wplazyseoplugin = check_wplazyseoplugin(sites)
+    wpeasyupload = check_wpeasyupload(sites)
+    wpsymposium = check_wpsymposium(sites)
+    for ss in wordpress :
+        print ss
+    print '[*] Found, ', len(wordpress), ' wordpress sites.'
+    print '-'*30+'\n'
+    for ss in wpstorethemeremotefileupload  :
+        print ss
+    print '[*] Found, ', len(wpstorethemeremotefileupload), ' wp_storethemeremotefileupload exploit.'
+    print '-'*30+'\n'
+    for ss in wpcontactcreativeform  :
+        print ss
+    print '[*] Found, ', len(wpcontactcreativeform), ' wp_contactcreativeform exploit.'
+    print '-'*30+'\n'
+    for ss in wplazyseoplugin  :
+        print ss
+    print '[*] Found, ', len(wplazyseoplugin), ' wp_lazyseoplugin exploit.'
+    print '-'*30+'\n'
+    for ss in wpeasyupload  :
+        print ss
+    print '[*] Found, ', len(wpeasyupload), ' wp_easyupload exploit.'
+    print '-'*30+'\n'
+    for ss in wpsymposium :
+        print ss
+
+
+    print '[*] Found, ', len(wpsymposium), ' wp_sympsiup exploit.'
+
+    print '\n'
+############################
 #begin :D 
 if __name__ == "__main__":
-  OS()
-    
+  menu()
+
     
     
     

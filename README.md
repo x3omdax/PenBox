@@ -41,10 +41,6 @@ our hope is in the last version we will have evry script that a hacker needs :)
 - 11) Scan ports (common ports)
 - 12) Get server banner
 - 13) Bypass Cloudflare
-* OS_System : 
-- 1) Mac OSX
-- 2) Linux ( root required ) 
-- 3) Windows ( not available "yet" )
 * Other_tools : 
 - jboss-autopwn
 - sqlmap

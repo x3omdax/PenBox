@@ -108,7 +108,7 @@ def ifinurl():
     if cinurl in yes:
         inurl()
     if cinurl in no:
-        insinurl()
+        menu()
     elif cinurl == "":
         menu()
     else: 

@@ -128,8 +128,8 @@ def pixiewps():
     choicewps = raw_input("Continue ? Y/N : ")
     if choicewps in yes :
         os.system("git clone https://github.com/wiire/pixiewps.git") 
-        os.system(" cd pixiewps/src & make ")
-        os.system(" cd pixiewps/src & sudo make install")
+        os.system(" cd pixiewps/src && make ")
+        os.system(" cd pixiewps/src && sudo make install")
     if choicewps in no : 
         menu() 
     elif choicewps == "":
@@ -187,10 +187,10 @@ def nmap():
     if choice7 in yes :
         os.system("wget https://nmap.org/dist/nmap-7.01.tar.bz2")
         os.system("bzip2 -cd nmap-7.01.tar.bz2 | tar xvf -")
-        os.system("cd nmap-7.01 & ./configure")
-        os.system("cd nmap-7.01 & make")
+        os.system("cd nmap-7.01 && ./configure")
+        os.system("cd nmap-7.01 && make")
         os.system("su root")
-        os.system("cd nmap-7.01 & make install")
+        os.system("cd nmap-7.01 && make install")
     elif choice7 in no :
         info()
     elif choice7 == "":
@@ -281,8 +281,8 @@ def reaver():
     if creaver in yes:
         os.system("apt-get -y install build-essential libpcap-dev sqlite3 libsqlite3-dev aircrack-ng pixiewps")
         os.system("git clone https://github.com/t6x/reaver-wps-fork-t6x.git")
-        os.system("cd reaver-wps-fork-t6x/src/ & ./configure")
-        os.system("cd reaver-wps-fork-t6x/src/ & make")
+        os.system("cd reaver-wps-fork-t6x/src/ && ./configure")
+        os.system("cd reaver-wps-fork-t6x/src/ && make")
     elif creaver in no:
         clearScr(); wire()
     elif creaver == "":

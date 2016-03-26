@@ -9,6 +9,11 @@ our hope is in the last version we will have evry script that a hacker needs :)
 * sudoer 
 
 # Versions
+@ Version v1.3 : 
+- removed windows and linux bugs
+- fixes non working tools on private submenu 
+- added new tools : Shell and Directory Finder 
+- Banner and logo redesigne 
 @ Version v1.2 : 
 * All Os Compatible : Windows , Linux , OSX 
 - pixiewps

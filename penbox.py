@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+ #!/usr/bin/env python2.7
 #
 #          All In One Tool For Penetration Testing 
 #           Authors : Fedy Wesleti , Mohamed Nour 
@@ -30,30 +30,32 @@ yes = set(['yes','y', 'ye', 'Y'])
 no = set(['no','n'])
 def logo():
     print """
-  ########  ######## ##    ## ########   #######  ##     ## 
-  ##     ## ##       ###   ## ##     ## ##     ##  ##   ##  
-  ##     ## ##       ####  ## ##     ## ##     ##   ## ##   
-  ########  ######   ## ## ## ########  ##     ##    ###    
-  ##        ##       ##  #### ##     ## ##     ##   ## ##   
-  ##        ##       ##   ### ##     ## ##     ##  ##   ##  
-  ##        ######## ##    ## ########   #######  ##     ##  v1.2
-                                  A Penetration Testing Framework 
- 
+ ooooooooo.                         oooooooooo.                        
+`888   `Y88.                       `888'   `Y8b                       
+ 888   .d88'  .ooooo.  ooo. .oo.    888     888  .ooooo.  oooo    ooo 
+ 888ooo88P'  d88' `88b `888P"Y88b   888oooo888' d88' `88b  `88b..8P'  
+ 888         888ooo888  888   888   888    `88b 888   888    Y888'    
+ 888         888    .o  888   888   888    .88P 888   888  .o8"'88b   
+o888o        `Y8bod8P' o888o o888o o888bood8P'  `Y8bod8P' o88'   888o v1.3
+                                  A Penetration Testing Framework
+                                                                      
+                                                                      
   [+]       Coded BY Fedy Wesleti & Mohamed Nour        [+] 
   [+]                FB/CEH.TN   ~~ FB/mohamed.zeus.0   [+] 
   [+]             Greetz To All Pentesters              [+] 
 """
 def menu():
     print ("""
-  ########  ######## ##    ## ########   #######  ##     ## 
-  ##     ## ##       ###   ## ##     ## ##     ##  ##   ##  
-  ##     ## ##       ####  ## ##     ## ##     ##   ## ##   
-  ########  ######   ## ## ## ########  ##     ##    ###    
-  ##        ##       ##  #### ##     ## ##     ##   ## ##   
-  ##        ##       ##   ### ##     ## ##     ##  ##   ##  
-  ##        ######## ##    ## ########   #######  ##     ##  v1.2 
-                                  A Penetration Testing Framework 
- 
+ ooooooooo.                         oooooooooo.                        
+`888   `Y88.                       `888'   `Y8b                       
+ 888   .d88'  .ooooo.  ooo. .oo.    888     888  .ooooo.  oooo    ooo 
+ 888ooo88P'  d88' `88b `888P"Y88b   888oooo888' d88' `88b  `88b..8P'  
+ 888         888ooo888  888   888   888    `88b 888   888    Y888'    
+ 888         888    .o  888   888   888    .88P 888   888  .o8"'88b   
+o888o        `Y8bod8P' o888o o888o o888bood8P'  `Y8bod8P' o88'   888o v1.3
+                                  A Penetration Testing Framework
+                                                                      
+
   [+]       Coded BY Fedy Wesleti & Mohamed Nour        [+] 
   [+]                FB/CEH.TN   ~~ FB/mohamed.zeus.0   [+] 
   [+]             Greetz To All Pentesters              [+] 
@@ -66,7 +68,7 @@ def menu():
     4 : Exploitation Tools
     5 : Sniffing & Spoofing
     6 : Web Hacking 
-    7 : Privat Tools
+    7 : Private Tools
     99 : Exit
 
     """)
@@ -121,7 +123,6 @@ def commix():
         os.system("git clone https://github.com/stasinopoulos/commix.git commix")
     elif choicecmx in no:
         os.system('clear'); info()        
- 
 def pixiewps():
     print"""Pixiewps is a tool written in C used to bruteforce offline the WPS pin exploiting the low or non-existing entropy of some Access Points, the so-called "pixie dust attack" discovered by Dominique Bongard in summer 2014. It is meant for educational purposes only
     """
@@ -143,6 +144,8 @@ def webhack():
     print("4 : Gravity Form Scanner")
     print("5 : File Upload Checker")
     print("6 : Wordpress Exploit Scanner")
+    print("7 : Wordpress Plugins Scanner")
+    print("8 : Shell and Directory Finder")
     print("99 : Exit")
     choiceweb = raw_input("Enter Your Choice : ")
     if choiceweb == "1":
@@ -158,6 +161,10 @@ def webhack():
         clearScr(); sqlscan()
     if choiceweb =="6":
         clearScr(); wpminiscanner()
+    if choiceweb =="7":
+        clearScr();wppluginscan()
+    if choiceweb =="8":
+        clearScr();shelltarget()
     elif choiceweb =="99":
         menu()
     elif choiceweb == "":
@@ -214,6 +221,36 @@ def jboss():
         menu()
     else: 
         menu()
+def wppluginscan():
+    Notfound = [404,401,400,403,406,301]
+    sitesfile = raw_input("sites file : ")
+    filepath = raw_input("Plugins File : ")
+    def scan(site, dir):
+        global resp
+        try:
+                conn = httplib.HTTPConnection(site)
+                conn.request('HEAD', "/wp-content/plugins/" + dir)
+                resp = conn.getresponse().status
+        except(), message:
+                print "Cant Connect :",message
+                pass
+    def timer():
+        now = time.localtime(time.time())
+        return time.asctime(now)
+    def main():
+        sites = open(sitesfile).readlines()
+        plugins = open(filepath).readlines()
+        for site in sites:
+            site = site.rstrip()
+        for plugin in plugins:
+            plugin = plugin.rstrip()
+            scan(site,plugin)
+            if resp not in Notfound:
+                    print "+----------------------------------------+"
+                    print "| current site :" + site
+                    print "| Found Plugin : "  + plugin
+                    print "| Result:",resp
+#----------------------------------------------------------------
 def sqlmap():
     print ("usage : python sqlmap.py -h")
     choice8 = raw_input("Continue: y/n :")
@@ -225,6 +262,39 @@ def sqlmap():
         menu()
     else: 
         menu()
+directories = ['/uploads/','/upload/','/files/','/resume/','/resumes/','/documents/','/docs/','/pictures/','/file/','/Upload/','/Uploads/','/Resume/','/Resume/','/UsersFiles/','/Usersiles/','/usersFiles/','/Users_Files/','/UploadedFiles/','/Uploaded_Files/','/uploadedfiles/','/uploadedFiles/','/hpage/','/admin/upload/','/admin/uploads/','/admin/resume/','/admin/resumes/','/admin/pictures/','/pics/','/photos/','/Alumni_Photos/','/alumni_photos/','/AlumniPhotos/','/users/']
+shells = ['wso.php','shell.php','an.php','hacker.php','lol.php','up.php','cp.php','upload.php','sh.php','pk.php','mad.php','x00x.php','worm.php','1337worm.php','config.php','x.php','haha.php']
+upload = []
+#--------------
+def grabuploadedlink(url):
+    try :
+                    for dir in directories :
+                              currentcode = urllib.urlopen(url + dir).getcode()
+                              if currentcode == 200 or currentcode ==  403:
+                                     print "-------------------------"
+                                     print "  [ + ] Found Directory :  " + str(url + dir)               + " [ + ]"     
+                                     print "-------------------------"                                                                   
+                                     upload.append(url + dir)  
+    except :
+      pass     
+def grabshell(url) :                                                                     
+   try :
+        for upl in upload :
+                            for shell in shells :
+                              currentcode = urllib.urlopen(upl + shell).getcode()
+                              if currentcode == 200 :
+                                     print "-------------------------"
+                                     print "  [ ! ] Found Shell :  " + str(upl + shell)         + " [ ! ]"     
+                                     print "-------------------------"         
+   except :
+        pass  
+def shelltarget():
+    print("exemple : http://target.com")
+    line = raw_input("target : ")
+    line = line.rstrip()
+    grabuploadedlink(line)
+    grabshell(line)
+
 def setoolkit():
     print ("The Social-Engineer Toolkit is an open-source penetration testing framework")
     print(") designed for social engineering. SET has a number of custom attack vectors that ")
@@ -390,8 +460,8 @@ def info():
 def priv8():
     tnn()
 def passwd():
-    print("1:  cupp ")
-    print("2:  Ncrack")
+    print("1: Cupp ")
+    print("2: Ncrack")
     print("99: Back To Main Menu")
     choice3 = raw_input("Select from the menu:")
     if choice3 =="1":
@@ -402,6 +472,8 @@ def passwd():
         clearScr(); menu()
     elif choice3 == "":
         menu()
+    elif choice3 == "3":
+        fb()
     else: 
         menu()
 def wire():

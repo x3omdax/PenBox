@@ -9,6 +9,12 @@ our hope is in the last version we will have evry script that a hacker needs :)
 * sudoer 
 
 # Versions
+@ Version v1.4 : 
+- fixed bugs
+- added a new menu : Post Exploitation 
+- added a website checker
+- added a Vbulletin 5.X remote code execution
+- added a Joomla! 1.5 - 3.4.5 remote code execution
 @ Version v1.3 : 
 - removed windows and linux bugs
 - fixes non working tools on private submenu 

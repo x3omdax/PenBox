@@ -1,35 +1,70 @@
 # PenBox – A Penetration Testing Framework
-Changelog Version v1.4 :
-+ fixed bugs
-+ added a new menu : Post Exploitation
-+ added a website checker
-+ added a Vbulletin 5.X remote code execution
-+ added a Joomla! 1.5 – 3.4.5 remote code execution @ Version v1.3 :
-+ removed windows and linux bugs
-+ fixes non working tools on private submenu
-+ added new tools : Shell and Directory Finder
-+ Banner and logo redesigne
-Operating System Support:
-1) Mac OSX
-2) Linux
-3) Windows
-Main Menu:
-1 : Information Gathering
-2 : Password Attacks
-3 : Wireless Testing
-4 : Exploitation Tools
-5 : Sniffing & Spoofing
-6 : Web HAcking
-7 : Private Tools
+A Penetration Testing Framework , The Hacker’s Repo our hope is in the last version we will have evry script that a hacker needs
+#Information Gathering : 
++ nmap 
++ Setoolkit
++ Port Scanning
++ Host To IP
++ wordpress user enumeration
++ CMS scanner
++ XSStracer - checks remote web servers for Clickjacking, Cross-Frame Scripting, Cross-Site Tracing and Host Header Injection
++ Doork - Google Dorks Passive Vulnerability Auditor 
 
-Usage:
-Python
-git clone https://github.com/x3omdax/PenBox && cd PenBox
-python penbox.py
+# Password Attacks : 
++ Cupp 
++ Ncrack
 
+# Wireless Testing : 
++ reaver 
++ pixiewps
 
-git clone https://github.com/x3omdax/PenBox && cd PenBox
-python penbox.py
+# Exploitation Tools : 
++ Venom
++ sqlmap
++ Shellnoob
++ commix
++ FTP Auto Bypass
++ jboss-autopwn
+
+# Sniffing & Spoofing : 
++ Setoolkit 
++ SSLtrip
++ pyPISHER
++ SMTP Mailer
+
+# Web Hacking : 
++ Drupal Hacking 
++ Inurlbr
++ Wordpress & Joomla Scanner
++ Gravity Form Scanner
++ File Upload Checker
++ Wordpress Exploit Scanner
++ Wordpress Plugins Scanner
++ Shell and Directory Finder
++ Joomla! 1.5 - 3.4.5 remote code execution
++ Vbulletin 5.X remote code execution
++ BruteX - Automatically brute force all services running on a target
+
+#Private Tools
++ Get all websites
++ Get joomla websites
++ Get wordpress websites
++ Find control panel
++ Find zip files
++ Find upload files
++ Get server users
++ Scan from SQL injection
++ Scan ports (range of ports)
++ Scan ports (common ports)
++ Get server banner
++ Bypass Cloudflare
+
+#Post Exploitation
++ Shell Checker
++ POET
+
+#Recon
++ Sniper
  
-Update:
-git pull origin master
+#Installation
+git clone https://github.com/x3omdax/PenBox.git 

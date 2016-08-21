@@ -9,6 +9,7 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + CMS scanner
 + XSStracer - checks remote web servers for Clickjacking, Cross-Frame Scripting, Cross-Site Tracing and Host Header Injection
 + Doork - Google Dorks Passive Vulnerability Auditor 
++ Scan A server's Users
 
 # Password Attacks : 
 + Cupp 
@@ -17,6 +18,7 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 # Wireless Testing : 
 + reaver 
 + pixiewps
++ Bluetooth Honeypot GUI Framework
 
 # Exploitation Tools : 
 + Venom
@@ -25,6 +27,9 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + commix
 + FTP Auto Bypass
 + jboss-autopwn
++ Blind SQL Automatic Injection And Exploit
++ Bruteforce the Android Passcode given the hash and salt
++ Joomla, Mambo, PHP-Nuke, and XOOPS CMS SQL injection Scanner
 
 # Sniffing & Spoofing : 
 + Setoolkit 
@@ -44,6 +49,7 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + Joomla! 1.5 - 3.4.5 remote code execution
 + Vbulletin 5.X remote code execution
 + BruteX - Automatically brute force all services running on a target
++ Arachni - Web Application Security Scanner Framework
 
 #Private Tools
 + Get all websites
@@ -62,6 +68,7 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 #Post Exploitation
 + Shell Checker
 + POET
++ Weeman - Phishing Framework
 
 #Recon
 + Sniper

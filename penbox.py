@@ -1093,7 +1093,7 @@ class TNscan : #TNscan Function menu
                                 print ' [*] SQLi found -> ', power
             except:
                 pass  
-def portScanner(self, mode, ran) :
+    def portScanner(self, mode, ran) :
         """
         simple port scanner works with range of ports 
         or with common ports (al-swisre idea)

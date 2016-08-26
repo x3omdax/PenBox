@@ -34,6 +34,7 @@ shells = ['wso.php','shell.php','an.php','hacker.php','lol.php','up.php','cp.php
 upload = []
 yes = set(['yes','y', 'ye', 'Y'])
 no = set(['no','n'])
+ditect= ['13', '14', '15', '16', '17', '18', '19', '20', '21']
 ########################## 
 #end of varialbles 
 def logo():
@@ -266,8 +267,8 @@ def pixiewps():
     choicewps = raw_input("Continue ? Y/N : ")
     if choicewps in yes :
         os.system("git clone https://github.com/wiire/pixiewps.git") 
-        os.system(" cd pixiewps/src && make ")
-        os.system(" cd pixiewps/src && sudo make install")
+        os.system(" cd pixiewps/src & make ")
+        os.system(" cd pixiewps/src & sudo make install")
     if choicewps in no : 
         menu() 
     elif choicewps == "":
@@ -287,7 +288,16 @@ def webhack():
     print("10: Vbulletin 5.X remote code execution")
     print("11: BruteX - Automatically brute force all services running on a target")
     print("12: Arachni - Web Application Security Scanner Framework")
-    print("99: Exit")
+    print("13: Sub-domain Scanning")
+    print("14: Wordpress Scanning")
+    print("15: Wordpress Username Enumeration")
+    print("16: Wordpress Backup Grabbing")
+    print("17: Sensitive File Detection")
+    print("18: Same-Site Scripting Scanning")
+    print("19: Click Jacking Detection")
+    print("20: Powerful XSS vulnerability scanning")
+    print("21: SQL Injection vulnerability scanning")
+    print("99:  Exit")
     choiceweb = raw_input("Enter Your Choice : ")
     if choiceweb == "1":
         clearScr()
@@ -314,6 +324,8 @@ def webhack():
         clearScr();brutex()
     if choiceweb=="12":
         clearScr();arachni()
+    if choiceweb in ditect:
+        dtect()
     elif choiceweb =="99":
         menu()
     elif choiceweb == "":
@@ -345,16 +357,23 @@ def insinurl():
     os.system("mv /SCANNER-INURLBR/inurbr.php inurlbr.php")
     clearScr()
     inurl()
+def dtect():
+    print("This will install and run D-TECT Penetration testing framework")
+    cdtect=raw_input("Continue ? Y/N : ")
+    if cdtect in yes:
+        os.system("git clone https://github.com/shawarkhanethicalhacker/D-TECT.git && cd D-TECT && python d-tect.py")
+    else :
+        menu()
 def nmap():
 
     choice7 = raw_input("continue ? Y / N : ")
     if choice7 in yes :
         os.system("wget https://nmap.org/dist/nmap-7.01.tar.bz2")
         os.system("bzip2 -cd nmap-7.01.tar.bz2 | tar xvf -")
-        os.system("cd nmap-7.01 && ./configure")
-        os.system("cd nmap-7.01 && make")
+        os.system("cd nmap-7.01 & ./configure")
+        os.system("cd nmap-7.01 & make")
         os.system("su root")
-        os.system("cd nmap-7.01 && make install")
+        os.system("cd nmap-7.01 & make install")
     elif choice7 in no :
         info()
     elif choice7 == "":
@@ -515,8 +534,8 @@ def reaver():
     if creaver in yes:
         os.system("apt-get -y install build-essential libpcap-dev sqlite3 libsqlite3-dev aircrack-ng pixiewps")
         os.system("git clone https://github.com/t6x/reaver-wps-fork-t6x.git")
-        os.system("cd reaver-wps-fork-t6x/src/ && ./configure")
-        os.system("cd reaver-wps-fork-t6x/src/ && make")
+        os.system("cd reaver-wps-fork-t6x/src/ & ./configure")
+        os.system("cd reaver-wps-fork-t6x/src/ & make")
     elif creaver in no:
         clearScr(); wire()
     elif creaver == "":
@@ -1471,7 +1490,24 @@ def wpminiscanner():
     print '[*] Found, ', len(wpsymposium), ' wp_sympsiup exploit.'
 
     print '\n'
+def update():
+    print("""+----------------------------------+-------------------------+------------------------+------------------------+
+|               OS                 |         Windows         |         Linux          |         Others         |
++----------------------------------+-------------------------+------------------------+------------------------+
+| Dependencies                     | Git Clone               | Requests (for python ) | Git Clone              |
+| that you need to run our tool    | Ruby                    | Ruby                   | Ruby , Perl , Python   |
+| Install them before you continue | Perl                    |                        | Requests (for python ) |
+|                                  | Requests (for python )  |                        |                        |
++----------------------------------+-------------------------+------------------------+------------------------+
+""")
+    upc=raw_input("Do you have what you need to run PenBox ? Y/N : ")
+    if upc in yes:
+        menu()
+    else:
+        print("Google What you need or contact me on fb.com/CEH.TN ")
+        print("BYE ^^")
+        sys.exit();
 ############################
 #begin :D 
 if __name__ == "__main__":
-  menu()
+  update()

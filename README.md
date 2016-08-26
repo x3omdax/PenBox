@@ -50,6 +50,15 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + Vbulletin 5.X remote code execution
 + BruteX - Automatically brute force all services running on a target
 + Arachni - Web Application Security Scanner Framework
++ Sub-domain Scanning
++ Wordpress Scanning
++ Wordpress Username Enumeration
++ Wordpress Backup Grabbing
++ Sensitive File Detection
++ Same-Site Scripting Scanning
++ Click Jacking Detection
++ Powerful XSS vulnerability scanning
++ SQL Injection vulnerability scanning
 
 #Private Tools
 + Get all websites

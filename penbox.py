@@ -182,7 +182,7 @@ def arachni():
     if cara in yes:
         os.system("git clone git://github.com/Arachni/arachni.git")
         os.system("cd arachni && sudo gem install bundler && bundle install --without prof && rake install")
-        os.system("archani")
+        os.system("arachni")
     clearScr()
     os.system("cd arachni/bin && chmod 777 arachni && ./arachni %s"%tara)
 def xsstracer():

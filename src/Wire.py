@@ -25,13 +25,15 @@
 ################################################################################
 
 from os import system, getcwd
+from src.var.MyDecorators import CheckDirectory, CheckFile
 
 class Wire:
     """
     """
     def __init__(self):
-        self.DIRECTORY = getcwd() + "/src/bin"
+        self.DIRECTORY = getcwd() + "/src/bin/reaver-wps-fork-t6x"
 
+    @CheckDirectory(path = getcwd() + "/src/bin/reaver-wps-fork-t6x")
     def reaver(self):
         """
         """
@@ -48,6 +50,7 @@ class Wire:
         print("[+] Configuring downloaded packages ...")
         system("cd src/bin/reaver-wps-fork-t6x/src && ./configure && make && sudo make install")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/pixiewps")
     def pixiewps(self):
         """
         """
@@ -64,6 +67,7 @@ class Wire:
         print("[+] Installing Piwiewps ...")
         system("cd src/bin/ && make && sudo make install")
 
+    @CheckFile(path = getcwd() + "/src/bin/bluepot-0.1.tar.gz")
     def bluepot(self):
         """
         """

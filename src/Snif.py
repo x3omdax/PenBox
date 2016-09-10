@@ -25,6 +25,7 @@
 ################################################################################
 
 from os import system, getcwd
+from src.var.MyDecorators import CheckDirectory, CheckFile
 
 class Snif:
     """
@@ -32,6 +33,7 @@ class Snif:
     def __init__(self):
         self.DIRECTORY = getcwd() + "/src/bin"
 
+    @CheckDirectory(path = getcwd() + "/src/bin/social-engineer-toolkit")
     def setoolkit(self):
         """
         """
@@ -45,6 +47,7 @@ class Snif:
         print("[+] Cloning Setoolkit from Github to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && git clone https://github.com/trustedsec/social-engineer-toolkit.git")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/sslstrip")
     def ssls(self):
         """
         """
@@ -57,12 +60,14 @@ class Snif:
         print("[+] Cloning SSLStrip from Github to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && git clone https://github.com/moxie0/sslstrip.git")
 
+    @CheckFile(path = getcwd() + "/src/bin/pisher.py" )
     def pisher(self):
         """
         """
         print("[+] Downloading Pisher from Pastebin to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && wget http://pastebin.com/raw/DDVqWp4Z --output-document=pisher.py")
 
+    @CheckFile(path = getcwd() + "/src/bin/smtpsend.py")
     def smtpsend(self):
         """
         """

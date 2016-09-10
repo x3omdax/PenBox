@@ -25,6 +25,10 @@
 ################################################################################
 
 from os import system, getcwd
+from urllib.request import urlopen
+from urllib.parse import urlparse
+from re import findall
+from src.var.MyDecorators import CheckDirectory, CheckFile
 
 class Webhack:
     """
@@ -46,7 +50,8 @@ class Webhack:
         user_input = input("Enter a number: ")
         while True:
             if user_input == '1':
-                pass
+                Webhack.drupal(self)
+                break
             elif user_input == '2':
                 pass
             elif user_input == '3':
@@ -56,6 +61,41 @@ class Webhack:
             else:
                 user_input = input("Please enter a number between [1..3] or 99 to back to the previous menu: ")
 
+    def load_url(self, url = None):
+        """
+        """
+        response = urlopen(url)
+        return response.read()
+
+    def drupal(self):
+        """
+        """
+        ip_target = input("Enter Target IP Address: ")
+        page = 1
+        while page <= 50:
+            print("Testing page n°: ", page)
+            url = "http://www.bing.com/search?q=ip%3A"+ip_target+"&go=Valider&qs=n&form=QBRE&pq=ip%3A"+\
+            ip_target+"&sc=0-0&sp=-1&sk=&cvid=af529d7028ad43a69edc90dbecdeac4f&first="+str(page)
+            data = Webhack.load_url(self, url)
+            filtred_data = findall('<div class="b_title"><h2><a href="(.*?)" h='.encode(), data)
+            page +=1
+            #print("data: ", data)
+            #print("filtred_data: ", filtred_data)
+
+            for urls in filtred_data:
+                parsed = urlparse(urls)
+                site = parsed.netloc
+
+                print("[+] Testing website: {0}".format(site))
+                testing_data = Webhack.load_url(self, site)
+                if "User : HolaKo" in testing_data:
+                    print("[-] Exploit found in {0}".format(site))
+                    print("User: HolaKo\nPass: admin")
+                else:
+                    print("[-] Exploit not found ! ")
+
+
+    @CheckDirectory(path = getcwd() + "/src/bin/SCANNER-INURLBR")
     def inurlbr(self):
         """
         """

@@ -25,6 +25,7 @@
 ################################################################################
 
 from os import system, getcwd
+from src.var.MyDecorators import CheckDirectory, CheckFile
 
 class Info:
     """
@@ -32,6 +33,7 @@ class Info:
     def __init__(self):
         self.DIRECTORY = getcwd() + "/src/bin"
 
+    @CheckDirectory(path = getcwd() + "/src/bin/nmap-7.01")
     def nmap(self):
         """
         """
@@ -49,6 +51,7 @@ class Info:
             system("rm -r src/bin/nmap-7.01 && rm src/bin/nmap-7.01.tar.bz2")
             print("[-] Done.")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/social-engineer-toolkit")
     def setoolkit(self):
         """
         """
@@ -72,7 +75,7 @@ class Info:
         """
         target = input("Enter Target IP address: ")
         system("nmap nmap -O -Pn {0}".format(target))
-        input("Enter space to continue ...")
+        input("Enter any key to continue ...")
 
     def h2ip(self):
         """
@@ -88,6 +91,7 @@ class Info:
         print(gethostbyname(host))
         input("Enter any key to continue ...")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/wpscan")
     def wpue(self):
         """
         """
@@ -104,6 +108,7 @@ class Info:
             print("[+] Checking/Installing Dependencies on Fedora OS...")
             system("sudo dnf install gcc ruby-devel libxml2 libxml2-devel libxslt libxslt-devel libcurl-devel patch rpm-build")
         elif distribution == "Arch Linux":
+            print("[+] Checking/Installing Dependencies on Arch Linux OS...")
             system("pacman -Syu ruby")
             system("pacman -Syu libyaml")
 
@@ -112,8 +117,9 @@ class Info:
         system("cd src/bin/ && git clone https://github.com/wpscanteam/wpscan.git")
         target = input("Enter a Wordpress Target: ")
         system("cd src/bin/wpscan && ruby wpscan.rb --url {0} --enumerate u".format(target))
-        input("Enter space to continue ...")
+        input("Enter any key to continue ...")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/CMSmap")
     def cmsscan(self):
         """
         """
@@ -122,6 +128,7 @@ class Info:
         target = input("Enter Target: ")
         system("cd src/bin/CMSmap/ && python cmsmap.py -t {0}".format(target))
 
+    @CheckDirectory(path = getcwd() + "/src/bin/XSSTracer")
     def xsstracer(self):
         """
         """
@@ -134,6 +141,7 @@ class Info:
         port = input("Enter Target port: ")
         system("cd src/bin/XSSTracer && python xsstracer.py {0} {1}".format(target, port))
 
+    @CheckFile(path = getcwd() + "/src/bin/doork.py")
     def doork(self):
         """
         """

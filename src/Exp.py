@@ -25,6 +25,7 @@
 ################################################################################
 
 from os import system, getcwd
+from src.var.MyDecorators import CheckDirectory, CheckFile
 
 class Exp:
     """
@@ -32,6 +33,7 @@ class Exp:
     def __init__(self):
         self.DIRECTORY = getcwd() + "/src/bin"
 
+    @CheckDirectory(path = getcwd() + "/src/bin/crisp-shellcode-generator-shell" )
     def venom(self):
         """
         """
@@ -41,6 +43,7 @@ class Exp:
         print("[+] Checking/Installing Dependencies ...")
         system("cd src/bin/crisp-shellcode-generator-shell && sudo bash venom.sh ")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/sqlmap")
     def sqlmap(self):
         """
         """
@@ -54,6 +57,7 @@ class Exp:
         print("[+] Cloning SQLmap from Github to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && git clone https://github.com/sqlmapproject/sqlmap.git")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/shellnoob")
     def shellnoob(self):
         """"
         """
@@ -64,6 +68,7 @@ class Exp:
         print("[+] Cloning Shellnoob from Github to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && git clone https://github.com/reyammer/shellnoob.git")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/commix")
     def commix(self):
         """
         """
@@ -73,6 +78,7 @@ class Exp:
         print("[+] Cloning commix from github to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && git clone https://github.com/stasinopoulos/commix.git")
 
+    @CheckFile(path = getcwd() + "/src/bin/gabriel.py")
     def gabriel(self):
         """
         """
@@ -82,6 +88,7 @@ class Exp:
         print("[+] Downloading Gabriel from Pastebin to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && wget http://pastebin.com/raw/Szg20yUh --output-document=gabriel.py ")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/jboss-autopwn")
     def jboss(self):
         """
         """
@@ -94,6 +101,7 @@ class Exp:
         print("[+] Cloning Jboss-autopwn from Github to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && git clone https://github.com/SpiderLabs/jboss-autopwn.git")
 
+    @CheckFile(path = getcwd() + "/src/bin/bsqlbf-v2-7.pl")
     def bsqlbf(self):
         """
         """
@@ -105,6 +113,7 @@ class Exp:
         print("[+] Downloading from Google Code Archive to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bsqlbf-v2/bsqlbf-v2-7.pl")
 
+    @CheckFile(path = getcwd() + "/src/bin/cmsfew.py")
     def cmsfew(self):
         """
         """
@@ -114,6 +123,7 @@ class Exp:
         print("[+] Downloading CMSFew from packetstormsecurity.net to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && wget https://dl.packetstormsecurity.net/UNIX/scanners/cms_few.py.txt -O cmsfew.py")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/AndroidPINCrack")
     def androidhash(self):
         """
         """

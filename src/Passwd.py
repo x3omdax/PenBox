@@ -25,6 +25,7 @@
 ################################################################################
 
 from os import system, getcwd
+from src.var.MyDecorators import CheckDirectory, CheckFile
 
 class Passwd:
     """
@@ -32,6 +33,7 @@ class Passwd:
     def __init__(self):
         self.DIRECTORY = getcwd() + "/src/bin"
 
+    @CheckDirectory(path = getcwd() + "/src/bin/cupp")
     def cupp(self):
         """
         """
@@ -39,6 +41,7 @@ class Passwd:
         print("[+] Cloning Cupp from github to {0} ...".format(self.DIRECTORY))
         system("cd src/bin && git clone https://github.com/Mebus/cupp.git")
 
+    @CheckDirectory(path = getcwd() + "/src/bin/ruby-ncrack")
     def ncrack(self):
         """
         """

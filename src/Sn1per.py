@@ -25,10 +25,12 @@
 ################################################################################
 
 from os import system, getcwd
+from src.var.MyDecorators import CheckDirectory
 
 class Sn1per:
     """
     """
+    @CheckDirectory(path = getcwd() + "/src/bin/Sn1per")
     def __init__(self):
         """
         """

@@ -290,13 +290,13 @@ Cross-Site Tracing and Host Header Injection
                         Webhack.inurlbr(self)
                         break
                     elif user_input7 == '3':
-                        print("@FIXME")
+                        Webhack.wppjmla(self)
                         break
                     elif user_input7 == '4':
-                        print("@FIXME")
+                        Webhack.gravity(self)
                         break
                     elif user_input7 == '5':
-                        print("@FIXME")
+                        Webhack.sqlscan(self)
                         break
                     elif user_input7 == '6':
                         print("@FIXME")

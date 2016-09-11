@@ -46,13 +46,6 @@ class Variables:
         '1337worm.php','config.php','x.php','haha.php'
         ]
 
-        self.UPLOAD = []
-
-        self.YES = ['yes','y', 'ye', 'Y']
-
-        self.NO = ['no','n']
-
-        self.DITECT = ['13', '14', '15', '16', '17', '18', '19', '20', '21']
 
     def logo(self):
         print("""

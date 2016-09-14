@@ -35,6 +35,7 @@ upload = []
 yes = set(['yes','y', 'ye', 'Y'])
 no = set(['no','n'])
 ditect= ['13', '14', '15', '16', '17', '18', '19', '20', '21']
+heathenchoice= ['4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
 ########################## 
 #end of varialbles 
 def logo():
@@ -47,10 +48,10 @@ def logo():
  |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.3
                          A Penetration Testing Framework
                                                                         
-
-[+]       Coded BY Mohamed Nour & Fedy Wesleti       [+] 
-[+]         FB/mohamed.zeus.0   ~~ FB/CEH.tN         [+] 
-[+]             Greetz To All Pentesters             [+] 
+[+] PenBox Official Facebook Page : FB/PenBox.Framework [+]
+[+]       Coded BY Mohamed Nour & Fedy Wesleti          [+] 
+[+]         FB/mohamed.zeus.0   ~~ FB/CEH.tN            [+] 
+[+]             Greetz To All Pentesters                [+] 
 
 """
 def menu():
@@ -64,9 +65,10 @@ def menu():
                          A Penetration Testing Framework
                                                                         
 
-[+]       Coded BY Mohamed Nour & Fedy Wesleti       [+] 
-[+]         FB/mohamed.zeus.0   ~~ FB/CEH.tN         [+] 
-[+]             Greetz To All Pentesters             [+] 
+[+] PenBox Official Facebook Page : FB/PenBox.Framework [+]
+[+]       Coded BY Mohamed Nour & Fedy Wesleti          [+] 
+[+]         FB/mohamed.zeus.0   ~~ FB/CEH.tN            [+] 
+[+]             Greetz To All Pentesters                [+] 
 
     Select from the menu:
 
@@ -131,6 +133,16 @@ def postexp():
     print("1:  Shell Checker")
     print("2:  POET")
     print("3:  Weeman - Phishing Framework")
+    print("4: Insecure Web Interface")
+    print("5: Insufficient Authentication/Authorization")
+    print("6: Insecure Network Services")
+    print("7: Lack of Transport Encryption")
+    print("8: Privacy Concerns")
+    print("9: Insecure Cloud Interface")
+    print("10: Insecure Mobile Interface")
+    print("11: Insufficient Security Configurability")
+    print("12: Insecure Software/Firmware")
+    print("13: Poor Physical Security")
     print("99: Return to main menu ")
     choice11 = raw_input("Enter Your Choice:")
     if choice11 == "1":
@@ -139,6 +151,13 @@ def postexp():
         poet()
     if choice11 == "3":
         weeman()
+    if choice11 in heathenchoice:
+        print("This Tool Will Work only on kali linux ")
+        hchoice = raw_input("Continue ? Y / N : ")
+        if hchoice in yes:
+            os.system("git clone https://github.com/chihebchebbi/Internet-Of-Things-Pentesting-Framework.git heathen && cd heathen && bash Heathen.sh ")
+        else :
+            postexp()
     elif choice11 == "99":
         menu()
 def scanusers():
@@ -1507,7 +1526,14 @@ def update():
         print("Google What you need or contact me on fb.com/CEH.TN ")
         print("BYE ^^")
         sys.exit();
+def begin():
+    try:
+        import requests
+        update()
+    except:
+        os.system("pip install requests")
+        update()
 ############################
 #begin :D 
 if __name__ == "__main__":
-  update()
+  begin()

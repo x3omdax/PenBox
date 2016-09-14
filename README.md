@@ -78,6 +78,16 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + Shell Checker
 + POET
 + Weeman - Phishing Framework
++ Insecure Web Interface
++ Insufficient Authentication/Authorization
++ Insecure Network Services
++ Lack of Transport Encryption
++ Privacy Concerns
++ Insecure Cloud Interface
++ Insecure Mobile Interface
++ Insufficient Security Configurability
++ Insecure Software/Firmware
++ Poor Physical Security
 
 #Recon
 + Sniper

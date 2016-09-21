@@ -81,6 +81,7 @@ def menu():
     7 : Private Tools
     8 : Post Exploitation
     9 : Recon
+    10: Smartphones Penetration
     99: Exit
 
     """)
@@ -104,6 +105,8 @@ def menu():
         postexp()
     elif choice == "9":
         sniper()    
+    elif choice == "10":
+        phones()
     elif choice == "99":
         clearScr(),sys.exit();
     elif choice == "":
@@ -118,6 +121,39 @@ def sniper():
         os.system ("cd Sn1per && sudo bash ./install.sh")
         os.system ("sniper")
     elif choicesniper == "":
+        menu()
+def phones():
+    phoneslist = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+    logo()
+    print("""
+        1.)  Attach Framework to a Deployed Agent/Create Agent"
+        2.)  Send Commands to an Agent"
+        3.)  View Information Gathered"
+        4.)  Attach Framework to a Mobile Modem"
+        5.)  Run a remote attack"
+        6.)  Run a social engineering or client side attack"
+        7.)  Compile code to run on mobile devices"
+        8.)  Install Stuff"
+        9.)  Use Drozer" 
+        10.)  Setup API"
+        11.) Bruteforce the Android Passcode given the hash and salt")
+        0.)  Exit""")
+    choicespf = raw_input("Select an option : ")
+    if choicespf in phoneslist:
+        oschoice = raw_input("""This option will install Smartphone Pentest Framework for you , you will have to configure and run on your own 
+        1)OSX 
+        2)Kali Linux 
+        3)BackTrack
+        select your OS : """)
+        if oschoice =="1":
+            os.system("git clone https://github.com/georgiaw/Smartphone-Pentest-Framework.git spf && cd spf && bash osxinstall.sh")
+        if oschoice =="2":
+            os.system("git clone https://github.com/georgiaw/Smartphone-Pentest-Framework.git spf && cd spf && bash kaliinstall ")
+        if oschoice =="3":
+            os.system("git clone https://github.com/georgiaw/Smartphone-Pentest-Framework.git spf && cd spf && bash btinstall")
+    elif choice5 =="11":
+        androidhash()
+    elif:
         menu()
 def doork():
     print("doork is a open-source passive vulnerability auditor tool that automates the process of searching on Google information about specific website based on dorks. ")
@@ -742,8 +778,7 @@ def exp():
     print("5 : FTP Auto Bypass")
     print("6 : jboss-autopwn")
     print("7 : Blind SQL Automatic Injection And Exploit")
-    print("8 : Bruteforce the Android Passcode given the hash and salt")
-    print("9 : Joomla, Mambo, PHP-Nuke, and XOOPS CMS SQL injection Scanner")
+    print("8 : Joomla, Mambo, PHP-Nuke, and XOOPS CMS SQL injection Scanner")
     print("99 : Go Back To Main Menu")
     choice5 = raw_input("Select from the menu:")
     if choice5 =="2":
@@ -761,8 +796,6 @@ def exp():
     if choice5 =="7":
         clearScr();bsqlbf()
     if choice5 =="8":
-        androidhash()
-    if choice5 =="9":
         cmsfew()
     elif choice5 =="99":
         menu()
@@ -1532,7 +1565,6 @@ def begin():
         update()
     except:
         os.system("pip install requests")
-        update()
 ############################
 #begin :D 
 if __name__ == "__main__":

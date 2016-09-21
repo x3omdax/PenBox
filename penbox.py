@@ -153,7 +153,7 @@ def phones():
             os.system("git clone https://github.com/georgiaw/Smartphone-Pentest-Framework.git spf && cd spf && bash btinstall")
     elif choice5 =="11":
         androidhash()
-    elif:
+    else:
         menu()
 def doork():
     print("doork is a open-source passive vulnerability auditor tool that automates the process of searching on Google information about specific website based on dorks. ")

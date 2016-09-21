@@ -91,6 +91,19 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 
 #Recon
 + Sniper
- 
+
+#Smartphones Penetration
++ Attach Framework to a Deployed Agent/Create Agent
++ Send Commands to an Agent
++ View Information Gathered
++ Attach Framework to a Mobile Modem
++ Run a remote attack
++ Run a social engineering or client side attack
++ Compile code to run on mobile devices
++ Install Stuff
++ Use Drozer
++ Setup API
++ Bruteforce the Android Passcode given the hash and salt
+
 #Installation
 git clone https://github.com/x3omdax/PenBox.git 

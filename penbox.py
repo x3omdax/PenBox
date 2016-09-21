@@ -45,12 +45,12 @@ def logo():
   _____) )  ____  ____   ____)  )  ___   _   _ 
  |  ____/  / _  )|  _ \ |  __  (  / _ \ ( \ / )
  | |      ( (/ / | | | || |__)  )| |_| | ) X ( 
- |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.3
+ |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.4
                          A Penetration Testing Framework
                                                                         
 [+] PenBox Official Facebook Page : FB/PenBox.Framework [+]
-[+]       Coded BY Mohamed Nour & Fedy Wesleti          [+] 
-[+]         FB/mohamed.zeus.0   ~~ FB/CEH.tN            [+] 
+[+]       Coded BY Fedy Wesleti & Mohamed Nour          [+] 
+[+]         FB/CEH.TN   ~~ FB/mohamed.zeus.0            [+] 
 [+]             Greetz To All Pentesters                [+] 
 
 """
@@ -61,13 +61,13 @@ def menu():
   _____) )  ____  ____   ____)  )  ___   _   _ 
  |  ____/  / _  )|  _ \ |  __  (  / _ \ ( \ / )
  | |      ( (/ / | | | || |__)  )| |_| | ) X ( 
- |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.3
+ |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.4
                          A Penetration Testing Framework
                                                                         
 
 [+] PenBox Official Facebook Page : FB/PenBox.Framework [+]
-[+]       Coded BY Mohamed Nour & Fedy Wesleti          [+] 
-[+]         FB/mohamed.zeus.0   ~~ FB/CEH.tN            [+] 
+[+]       Coded BY Fedy Wesleti & Mohamed Nour          [+] 
+[+]         FB/CEH.TN   ~~ FB/mohamed.zeus.0            [+] 
 [+]             Greetz To All Pentesters                [+] 
 
     Select from the menu:

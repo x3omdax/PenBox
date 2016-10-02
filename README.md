@@ -105,5 +105,13 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + Setup API
 + Bruteforce the Android Passcode given the hash and salt
 
+#QRLJacking Attack Vector
++ Chat Applications
++ Mailing Services
++ eCommerce
++ Online Banking
++ Passport Services
++ Mobile Management Software
+
 #Installation
 git clone https://github.com/x3omdax/PenBox.git 

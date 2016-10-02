@@ -40,35 +40,37 @@ heathenchoice= ['4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
 #end of varialbles 
 def logo():
     print """
-  ______                 ______                
- (_____ \               (____  \               
-  _____) )  ____  ____   ____)  )  ___   _   _ 
- |  ____/  / _  )|  _ \ |  __  (  / _ \ ( \ / )
- | |      ( (/ / | | | || |__)  )| |_| | ) X ( 
- |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.4
-                         A Penetration Testing Framework
+ _______  _______  _        ______   _______          
+(  ____ )(  ____ \( (    /|(  ___ \ (  ___  )|\     /|
+| (    )|| (    \/|  \  ( || (   ) )| (   ) |( \   / )
+| (____)|| (__    |   \ | || (__/ / | |   | | \ (_) / 
+|  _____)|  __)   | (\ \) ||  __ (  | |   | |  ) _ (  
+| (      | (      | | \   || (  \ \ | |   | | / ( ) \ 
+| )      | (____/\| )  \  || )___) )| (___) |( /   \ )
+|/       (_______/|/    )_)|/ \___/ (_______)|/     \| {v3}
+                                     The Hacker's Repo                                                                                                                                     
+                                                                                                    
                                                                         
-[+] PenBox Official Facebook Page : FB/PenBox.Framework [+]
 [+]       Coded BY Fedy Wesleti & Mohamed Nour          [+] 
-[+]         FB/CEH.TN   ~~ FB/mohamed.zeus.0            [+] 
-[+]             Greetz To All Pentesters                [+] 
-
+[-]           Facebook.com/PenBox.Framework             [-] 
+[-]             Greetz To All Pentesters                [-] 
 """
 def menu():
     print ("""
-  ______                 ______                
- (_____ \               (____  \               
-  _____) )  ____  ____   ____)  )  ___   _   _ 
- |  ____/  / _  )|  _ \ |  __  (  / _ \ ( \ / )
- | |      ( (/ / | | | || |__)  )| |_| | ) X ( 
- |_|       \____)|_| |_||______/  \___/ (_/ \_) V2.4
-                         A Penetration Testing Framework
+ _______  _______  _        ______   _______          
+(  ____ )(  ____ \( (    /|(  ___ \ (  ___  )|\     /|
+| (    )|| (    \/|  \  ( || (   ) )| (   ) |( \   / )
+| (____)|| (__    |   \ | || (__/ / | |   | | \ (_) / 
+|  _____)|  __)   | (\ \) ||  __ (  | |   | |  ) _ (  
+| (      | (      | | \   || (  \ \ | |   | | / ( ) \ 
+| )      | (____/\| )  \  || )___) )| (___) |( /   \ )
+|/       (_______/|/    )_)|/ \___/ (_______)|/     \| {v3}
+                                     The Hacker's Repo                                                                                                                                     
+                                                                                                    
                                                                         
-
-[+] PenBox Official Facebook Page : FB/PenBox.Framework [+]
 [+]       Coded BY Fedy Wesleti & Mohamed Nour          [+] 
-[+]         FB/CEH.TN   ~~ FB/mohamed.zeus.0            [+] 
-[+]             Greetz To All Pentesters                [+] 
+[-]           Facebook.com/PenBox.Framework             [-] 
+[-]             Greetz To All Pentesters                [-] 
 
     Select from the menu:
 
@@ -82,10 +84,11 @@ def menu():
     8 : Post Exploitation
     9 : Recon
     10: Smartphones Penetration
+    11: QRLJacking Attack Vector
     99: Exit
 
     """)
-    choice = raw_input("Enter Your Choice:")
+    choice = raw_input("Enter Your Choice: ")
     
     if choice == "1":
         info()
@@ -107,6 +110,8 @@ def menu():
         sniper()    
     elif choice == "10":
         phones()
+    elif choice == "11":
+        qrljack()
     elif choice == "99":
         clearScr(),sys.exit();
     elif choice == "":
@@ -122,29 +127,50 @@ def sniper():
         os.system ("sniper")
     elif choicesniper == "":
         menu()
+def qrljack():
+    os.system("git clone https://github.com/OWASP/QRLJacking qrl && cd qrl && cd cd QrlJacking-Framework && pip install -r requirements.txt && python QRLJacker.py ")
+def smartphones():
+    print("""
+  1 : APK Application scanning 
+  2 : Smartphones scanning
+  
+  """)
+    spc = raw_input("Select an option : ")
+    if spc =="1":
+        droidhunter()
+    if spc =="2":
+        phones()
+def droidhunter():
+    print ("Droid-Hunter - Android Application Vulnerability Analysis And Android Pentest Tool")
+    print ("Do You To Install Droid-Hunter ?")
+    choicedh = raw_input("Y/N: ")
+    if choicedh in yes:
+       os.system("git clone https://github.com/hahwul/droid-hunter.git && cd droid-hunter && sudo gem install html-table && gem install colorize && ruby dhunter.rb")
+    elif choicedh in no:
+        os.system('clear'); menu()
 def phones():
     phoneslist = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
     logo()
     print("""
-        1.)  Attach Framework to a Deployed Agent/Create Agent"
-        2.)  Send Commands to an Agent"
-        3.)  View Information Gathered"
-        4.)  Attach Framework to a Mobile Modem"
-        5.)  Run a remote attack"
-        6.)  Run a social engineering or client side attack"
-        7.)  Compile code to run on mobile devices"
-        8.)  Install Stuff"
-        9.)  Use Drozer" 
-        10.)  Setup API"
-        11.) Bruteforce the Android Passcode given the hash and salt")
-        0.)  Exit""")
+        1 :  Attach Framework to a Deployed Agent/Create Agent"
+        2 :  Send Commands to an Agent"
+        3 :  View Information Gathered"
+        4 :  Attach Framework to a Mobile Modem"
+        5 :  Run a remote attack"
+        6 :  Run a social engineering or client side attack"
+        7 :  Compile code to run on mobile devices"
+        8 :  Install Stuff"
+        9 :  Use Drozer" 
+        10:  Setup API"
+        11:  Bruteforce the Android Passcode given the hash and salt")
+        99:  Exit""")
     choicespf = raw_input("Select an option : ")
     if choicespf in phoneslist:
         oschoice = raw_input("""This option will install Smartphone Pentest Framework for you , you will have to configure and run on your own 
         1)OSX 
         2)Kali Linux 
         3)BackTrack
-        select your OS : """)
+        Select Your OS : """)
         if oschoice =="1":
             os.system("git clone https://github.com/georgiaw/Smartphone-Pentest-Framework.git spf && cd spf && bash osxinstall.sh")
         if oschoice =="2":
@@ -166,20 +192,20 @@ def doork():
         os.system("cd doork && python doork.py -t %s -o log.log"%doorkt)
 def postexp():
     clearScr()
-    print("1:  Shell Checker")
-    print("2:  POET")
-    print("3:  Weeman - Phishing Framework")
-    print("4: Insecure Web Interface")
-    print("5: Insufficient Authentication/Authorization")
-    print("6: Insecure Network Services")
-    print("7: Lack of Transport Encryption")
-    print("8: Privacy Concerns")
-    print("9: Insecure Cloud Interface")
+    print("1 :  Shell Checker")
+    print("2 :  POET")
+    print("3 :  Weeman - Phishing Framework")
+    print("4 : Insecure Web Interface")
+    print("5 : Insufficient Authentication/Authorization")
+    print("6 : Insecure Network Services")
+    print("7 : Lack of Transport Encryption")
+    print("8 : Privacy Concerns")
+    print("9 : Insecure Cloud Interface")
     print("10: Insecure Mobile Interface")
     print("11: Insufficient Security Configurability")
     print("12: Insecure Software/Firmware")
     print("13: Poor Physical Security")
-    print("99: Return to main menu ")
+    print("99: Go Back ")
     choice11 = raw_input("Enter Your Choice:")
     if choice11 == "1":
         sitechecker()
@@ -297,7 +323,7 @@ def bsqlbf():
     os.system("rm bsqlbf.pl")
 def venom():
     print ("Venom Automatic Shellcode Generator")
-    print ("Do You To Install Venom ?")
+    print ("Do You To Install ?")
     choiceshell = raw_input("Y/N: ")
     if choiceshell in yes:
         os.system("wget http://fsociety.tn/venom.zip --output-document=venom.zip")
@@ -352,7 +378,7 @@ def webhack():
     print("19: Click Jacking Detection")
     print("20: Powerful XSS vulnerability scanning")
     print("21: SQL Injection vulnerability scanning")
-    print("99:  Exit")
+    print("99: Go Back")
     choiceweb = raw_input("Enter Your Choice : ")
     if choiceweb == "1":
         clearScr()
@@ -675,17 +701,17 @@ def shellnoob():
     else:
         menu()
 def info():
-    print("1: nmap ")
-    print("2: Setoolkit")
-    print("3: Port Scanning")
-    print("4: Host To IP")
-    print("5: wordpress user enumeration")
-    print("6: CMS scanner")
-    print("7: XSStracer - checks remote web servers for Clickjacking, Cross-Frame Scripting, Cross-Site Tracing and Host Header Injection")
-    print("8: Doork - Google Dorks Passive Vulnerability Auditor ")
-    print("9: Scan A server's Users")
-    print("99: Back To Main Menu")
-    choice2 = raw_input("Select from the menu:")
+    print("1 : NMAP ")
+    print("2 : Setoolkit")
+    print("3 : Port Scanning")
+    print("4 : Host To IP")
+    print("5 : WP User Enumeration")
+    print("6 : CMS scanner")
+    print("7 : XSStracer ")
+    print("8 : Doork")
+    print("9 : Server Users")
+    print("99: Go Back")
+    choice2 = raw_input("Enter Your Choice: ")
     if choice2 == "1":
         os.system('clear'); nmap()
     if choice2 == "2":
@@ -753,11 +779,11 @@ def bluepot():
     else : 
         menu()
 def wire():
-    print("1 : reaver ")
-    print("2 : pixiewps")
+    print("1 : Reaver ")
+    print("2 : PixieWPS")
     print("3 : Bluetooth Honeypot GUI Framework")
-    print("99: Back To The Main Menu")
-    choice4 = raw_input("Select from the menu:")
+    print("99: Go Back")
+    choice4 = raw_input("Enter Your Choice: ")
     if choice4 =="1":
      clearScr();reaver()
     if choice4 =="2":
@@ -772,15 +798,17 @@ def wire():
         menu()
 def exp():
     print("1 : Venom")
-    print("2 : sqlmap")
+    print("2 : SqlMAP")
     print("3 : Shellnoob")
-    print("4 : commix")
+    print("4 : Commix")
     print("5 : FTP Auto Bypass")
-    print("6 : jboss-autopwn")
-    print("7 : Blind SQL Automatic Injection And Exploit")
-    print("8 : Joomla, Mambo, PHP-Nuke, and XOOPS CMS SQL injection Scanner")
-    print("99 : Go Back To Main Menu")
-    choice5 = raw_input("Select from the menu:")
+    print("6 : JBoss-autopwn")
+    print("7 : Bsqlbf")
+    print("8 : CMS Few")
+    print("9 : BLACKBOx")
+    print("10: Liffy")
+    print("99: Go Back")
+    choice5 = raw_input("Enter Your Choice: ")
     if choice5 =="2":
         clearScr(); sqlmap()
     if choice5 =="1":
@@ -797,12 +825,28 @@ def exp():
         clearScr();bsqlbf()
     if choice5 =="8":
         cmsfew()
+    if choice5 =="9":
+        blackbox()
+    if choice5 =="10":
+        liffy()
     elif choice5 =="99":
         menu()
     elif choice5 == "":
         menu()
     else: 
         menu()
+
+def liffy():
+    os.system("git clone https://github.com/hvqzao/liffy.git && cd liffy")
+    os.system("pip install requests && pip install argparse && pip install blessings && pip install urlparse && pip install daemon")
+    os.system("python liffy.py -h")
+    commandlfi = raw_input("Enter Liffy Command: ")
+    os.system("python liffy.py %S"%commandlfi)            
+def blackbox():
+    os.system("git clone https://darkeye@bitbucket.org/darkeye/blackbox.git && cd blackbox")
+    os.system("python blackbox.py -h")
+    blackboxmodule = raw_input("Choose A Module: ")
+    os.system("python blackbox.py %s")%blackboxmodule
 def snif():
     print("1 : Setoolkit ")
     print("2 : SSLtrip")
@@ -825,7 +869,7 @@ def snif():
     else: 
         menu()
 def cmsfew():
-    print("your target must be Joomla, Mambo, PHP-Nuke, and XOOPS Only ")
+    print("Your target must be Joomla, Mambo, PHP-Nuke, and XOOPS Only ")
     target = raw_input("Select a target : ")
     os.system("wget https://dl.packetstormsecurity.net/UNIX/scanners/cms_few.py.txt -O cms.py")
     os.system("python cms.py %s"%target)
@@ -838,19 +882,19 @@ def pisher():
     clearScr()
     os.system("python pisher.py")
 menuu = """
- 1) Get all websites
- 2) Get joomla websites
- 3) Get wordpress websites
- 4) Find control panel
- 5) Find zip files
- 6) Find upload files
- 7) Get server users
- 8) Scan from SQL injection
- 9) Scan ports (range of ports)
- 10) Scan ports (common ports)
- 11) Get server banner
- 12) Bypass Cloudflare
- 99) Exit
+ 1 : Get all websites
+ 2 : Get joomla websites
+ 3 : Get wordpress websites
+ 4 : Find control panel
+ 5 : Find zip files
+ 6 : Find upload files
+ 7 : Get server users
+ 8 : Scan from SQL injection
+ 9 : Scan ports (range of ports)
+ 10: Scan ports (common ports)
+ 11: Get server banner
+ 12: Bypass Cloudflare
+ 99: Exit
 """
 def unique(seq):
     """

@@ -47,7 +47,7 @@ def logo():
 |  _____)|  __)   | (\ \) ||  __ (  | |   | |  ) _ (  
 | (      | (      | | \   || (  \ \ | |   | | / ( ) \ 
 | )      | (____/\| )  \  || )___) )| (___) |( /   \ )
-|/       (_______/|/    )_)|/ \___/ (_______)|/     \| {v3}
+|/       (_______/|/    )_)|/ \___/ (_______)|/     \| {v3.1}
                                      The Hacker's Repo                                                                                                                                     
                                                                                                     
                                                                         
@@ -64,7 +64,7 @@ def menu():
 |  _____)|  __)   | (\ \) ||  __ (  | |   | |  ) _ (  
 | (      | (      | | \   || (  \ \ | |   | | / ( ) \ 
 | )      | (____/\| )  \  || )___) )| (___) |( /   \ )
-|/       (_______/|/    )_)|/ \___/ (_______)|/     \| {v3}
+|/       (_______/|/    )_)|/ \___/ (_______)|/     \| {v3.1}
                                      The Hacker's Repo                                                                                                                                     
                                                                                                     
                                                                         
@@ -205,6 +205,7 @@ def postexp():
     print("11: Insufficient Security Configurability")
     print("12: Insecure Software/Firmware")
     print("13: Poor Physical Security")
+    print("14: Tinyshell : python Client with php shell")
     print("99: Go Back ")
     choice11 = raw_input("Enter Your Choice:")
     if choice11 == "1":
@@ -220,7 +221,19 @@ def postexp():
             os.system("git clone https://github.com/chihebchebbi/Internet-Of-Things-Pentesting-Framework.git heathen && cd heathen && bash Heathen.sh ")
         else :
             postexp()
+    if choice11 == "14":
+        tinyshell()
     elif choice11 == "99":
+        menu()
+def tinyshell():
+    print("This tool will create a php payload , that will let you remote access the webserver using python ")
+    ctiny = raw_input("continue ? y/n : ")
+    if ctiny in yes:
+        os.system("git clone https://github.com/lawrenceamer/tinyshell.git")
+        print("you will find the php payload in /tinyshell/shell.php with the default password : 123456 , insert it in a php script and connect")
+        explurl = raw_input("Target link with php file : ")
+        os.system("cd tinyshell && python remote_shell.py %s 123456"%explurl)
+    elif ctiny in no:
         menu()
 def scanusers():
     site = raw_input('Enter a website : ')

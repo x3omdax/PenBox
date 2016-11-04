@@ -14,6 +14,7 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 # Password Attacks : 
 + Cupp 
 + Ncrack
++ AutoBrowser Screenshot
 
 # Wireless Testing : 
 + reaver 
@@ -30,7 +31,9 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + Blind SQL Automatic Injection And Exploit
 + Bruteforce the Android Passcode given the hash and salt
 + Joomla, Mambo, PHP-Nuke, and XOOPS CMS SQL injection Scanner
-
++ cms Few 
++ BLACKBOx 
++ Liffy
 # Sniffing & Spoofing : 
 + Setoolkit 
 + SSLtrip
@@ -88,6 +91,7 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + Insufficient Security Configurability
 + Insecure Software/Firmware
 + Poor Physical Security
++ Radium-Keylogger - Python keylogger with multiple features
 
 #Recon
 + Sniper
@@ -105,13 +109,8 @@ A Penetration Testing Framework , The Hacker’s Repo our hope is in the last ve
 + Setup API
 + Bruteforce the Android Passcode given the hash and salt
 
-#QRLJacking Attack Vector
-+ Chat Applications
-+ Mailing Services
-+ eCommerce
-+ Online Banking
-+ Passport Services
-+ Mobile Management Software
-
+#Others 
++ QrlJacking-Framework
++ Sniffles - Packet Capture Generator for IDS and Regular Expression Evaluation
 #Installation
 git clone https://github.com/x3omdax/PenBox.git 

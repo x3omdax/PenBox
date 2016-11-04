@@ -36,10 +36,15 @@ yes = set(['yes','y', 'ye', 'Y'])
 no = set(['no','n'])
 ditect= ['13', '14', '15', '16', '17', '18', '19', '20', '21']
 heathenchoice= ['4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
+G = '\033[92m' #green
+Y = '\033[93m' #yellow
+B = '\033[94m' #blue
+R = '\033[91m' #red
+W = '\033[0m' #white
 ########################## 
 #end of varialbles 
 def logo():
-    print """
+    print  ("""%s
  _______  _______  _        ______   _______          
 (  ____ )(  ____ \( (    /|(  ___ \ (  ___  )|\     /|
 | (    )|| (    \/|  \  ( || (   ) )| (   ) |( \   / )
@@ -47,16 +52,18 @@ def logo():
 |  _____)|  __)   | (\ \) ||  __ (  | |   | |  ) _ (  
 | (      | (      | | \   || (  \ \ | |   | | / ( ) \ 
 | )      | (____/\| )  \  || )___) )| (___) |( /   \ )
-|/       (_______/|/    )_)|/ \___/ (_______)|/     \| {v3.1}
-                                     The Hacker's Repo                                                                                                                                     
+|/       (_______/|/    )_)|/ \___/ (_______)|/     \| %s{v3.2}
+                                     %sThe Hacker's Repo                                                                                                                                     
                                                                                                     
-                                                                        
-[+]       Coded BY Fedy Wesleti & Mohamed Nour          [+] 
-[-]           Facebook.com/PenBox.Framework             [-] 
+%s                                                                        
+[+]       Coded BY %sFedy Wesleti %s& %sMohamed Nour          %s[+] 
+[-]           Facebook.com/%sPenBox.Framework %s            [-] 
 [-]             Greetz To All Pentesters                [-] 
-"""
+""")%(G,R,B,G,Y,G,Y,G,R,G)
 def menu():
     print ("""
+
+%s
  _______  _______  _        ______   _______          
 (  ____ )(  ____ \( (    /|(  ___ \ (  ___  )|\     /|
 | (    )|| (    \/|  \  ( || (   ) )| (   ) |( \   / )
@@ -64,16 +71,16 @@ def menu():
 |  _____)|  __)   | (\ \) ||  __ (  | |   | |  ) _ (  
 | (      | (      | | \   || (  \ \ | |   | | / ( ) \ 
 | )      | (____/\| )  \  || )___) )| (___) |( /   \ )
-|/       (_______/|/    )_)|/ \___/ (_______)|/     \| {v3.1}
-                                     The Hacker's Repo                                                                                                                                     
+|/       (_______/|/    )_)|/ \___/ (_______)|/     \| %s{v3.2}
+                                     %sThe Hacker's Repo                                                                                                                                     
                                                                                                     
-                                                                        
-[+]       Coded BY Fedy Wesleti & Mohamed Nour          [+] 
-[-]           Facebook.com/PenBox.Framework             [-] 
+%s                                                                        
+[+]       Coded BY %sFedy Wesleti %s& %sMohamed Nour          %s[+] 
+[-]           Facebook.com/%sPenBox.Framework %s            [-] 
 [-]             Greetz To All Pentesters                [-] 
 
     Select from the menu:
-
+    
     1 : Information Gathering
     2 : Password Attacks
     3 : Wireless Testing
@@ -84,10 +91,10 @@ def menu():
     8 : Post Exploitation
     9 : Recon
     10: Smartphones Penetration
-    11: QRLJacking Attack Vector
+    11: Others
     99: Exit
 
-    """)
+    """)%(G,R,B,G,Y,G,Y,G,R,G)
     choice = raw_input("Enter Your Choice: ")
     
     if choice == "1":
@@ -111,9 +118,9 @@ def menu():
     elif choice == "10":
         phones()
     elif choice == "11":
-        qrljack()
+        others()
     elif choice == "99":
-        clearScr(),sys.exit();
+        sys.exit();
     elif choice == "":
         menu()
     else: 
@@ -127,19 +134,43 @@ def sniper():
         os.system ("sniper")
     elif choicesniper == "":
         menu()
+def others():
+    print("""
+1) QrlJacking-Framework 
+2)Sniffles - Packet Capture Generator for IDS and Regular Expression Evaluation 
+99)
+        """)
+    otherc = raw_input("choose an option : ")
+    if otherc =="1":
+        qrljack()
+    elif otherc =="2":
+        sniffles()
+    elif otherc =="99":
+        menu()
+    else:
+        menu()
+def sniffles():
+    print("Sniffles is a tool for creating packet captures that will test IDS that use fixed patterns or regular expressions for detecting suspicious behavior")
+    print("this tool requires python3.X")
+    os.system("git clone https://github.com/petabi/sniffles && cd sniffles && python3 setup.py")
+    print("if this tool is not properly installed , run : cd sniffles && python3.X setup.py or contact me fb.com/ceh.tn")
 def qrljack():
     os.system("git clone https://github.com/OWASP/QRLJacking qrl && cd qrl && cd cd QrlJacking-Framework && pip install -r requirements.txt && python QRLJacker.py ")
 def smartphones():
     print("""
   1 : APK Application scanning 
   2 : Smartphones scanning
-  
+  99:
   """)
     spc = raw_input("Select an option : ")
     if spc =="1":
         droidhunter()
     if spc =="2":
         phones()
+    if spc=="99":
+        menu()
+    else:
+        menu()
 def droidhunter():
     print ("Droid-Hunter - Android Application Vulnerability Analysis And Android Pentest Tool")
     print ("Do You To Install Droid-Hunter ?")
@@ -206,6 +237,7 @@ def postexp():
     print("12: Insecure Software/Firmware")
     print("13: Poor Physical Security")
     print("14: Tinyshell : python Client with php shell")
+    print("15: Radium-Keylogger - Python keylogger with multiple features ")
     print("99: Go Back ")
     choice11 = raw_input("Enter Your Choice:")
     if choice11 == "1":
@@ -223,8 +255,14 @@ def postexp():
             postexp()
     if choice11 == "14":
         tinyshell()
+    if choice11 =="15":
+        radium()
     elif choice11 == "99":
         menu()
+def radium():
+    print("This step will only download Radium-Keylogger for you , it will not install it  ")
+    print("to install , cd Radium-Keylogger and see Requirements.txt first ")
+    os.system("git clone https://github.com/mehulj94/Radium-Keylogger")
 def tinyshell():
     print("This tool will create a php payload , that will let you remote access the webserver using python ")
     ctiny = raw_input("continue ? y/n : ")
@@ -769,13 +807,15 @@ def androidhash():
 def passwd():
     print("1: Cupp ")
     print("2: Ncrack")
-
+    print("3: AutoBrowser Screenshot")
     print("99: Back To Main Menu")
     choice3 = raw_input("Select from the menu:")
     if choice3 =="1":
      clearScr(); cupp()
     elif choice3 =="2":
         clearScr(); ncrack()
+    elif choice3 =="3":
+        autobrowser()
     elif choice3 =="99":
         clearScr(); menu()
     elif choice3 == "":
@@ -784,6 +824,9 @@ def passwd():
         fb()
     else: 
         menu()
+def autobrowser():
+    os.system("git clone https://github.com/El3ct71k/AutoBrowser && cd AutoBrowser && pip install -r requirements")
+    print("to execute: cd AutoBrowser && python AutoBrowser.py")
 def bluepot():
     print("you need to have at least 1 bluetooh receiver (if you have many it will work wiht those, too). You must install / libbluetooth-dev on Ubuntu / bluez-libs-devel on Fedora/bluez-devel on openSUSE ")
     choice = raw_input("Continue ? Y / N : ")
@@ -791,10 +834,15 @@ def bluepot():
         os.system("wget https://github.com/andrewmichaelsmith/bluepot/raw/master/bin/bluepot-0.1.tar.gz && tar xfz bluepot-0.1.tar.gz && sudo java -jar bluepot/BluePot-0.1.jar")
     else : 
         menu()
+def fluxion():
+    print("Fluxion is a remake of linset by vk496 with less bugs and more features. It's compatible with the latest release of Kali (Rolling). Latest builds (stable) and (beta) HERE . If you new, please start reading the wiki")
+    print("Requirements : A linux operating system. We recommend Kali Linux 2 or Kali 2016.1 rolling. Kali 2 & 2016 support the latest aircrack-ng versions. A external wifi card is recommended. ")
+    os.system("git clone https://github.com/deltaxflux/fluxion && cd fluxion && sudo bash Installer.sh")
 def wire():
     print("1 : Reaver ")
     print("2 : PixieWPS")
     print("3 : Bluetooth Honeypot GUI Framework")
+    print("4 : Fluxion - WPA/WPA2 Security Hacking Without Brute Force ")
     print("99: Go Back")
     choice4 = raw_input("Enter Your Choice: ")
     if choice4 =="1":
@@ -803,6 +851,8 @@ def wire():
         clearScr(); pixiewps()
     if choice4 =="3":
         bluepot()
+    if choice4 =="4":
+        fluxion()
     elif choice4 =="99":
         menu()
     elif choice4 == "":
@@ -1426,24 +1476,6 @@ class tnn():
         aaa = raw_input("Target IP : ")
         TNscan(aaa)
 ############################
-class bcolors:
-    HEADER = ''
-    OKBLUE = ''
-    OKGREEN = ''
-    WARNING = ''
-    FAIL = ''
-    ENDC = ''
-    CYAN = ''
-class colors():
-    PURPLE = ''
-    CYAN = ''
-    DARKCYAN = ''
-    BLUE = ''
-    GREEN = ''
-    YELLOW = ''
-    RED = ''
-    BOLD = ''
-    ENDC = ''
 def grabsqli(ip):
     try :
         print bcolors.OKBLUE  + "Check_Uplaod... "
@@ -1599,30 +1631,7 @@ def wpminiscanner():
     print '[*] Found, ', len(wpsymposium), ' wp_sympsiup exploit.'
 
     print '\n'
-def update():
-    print("""+----------------------------------+-------------------------+------------------------+------------------------+
-|               OS                 |         Windows         |         Linux          |         Others         |
-+----------------------------------+-------------------------+------------------------+------------------------+
-| Dependencies                     | Git Clone               | Requests (for python ) | Git Clone              |
-| that you need to run our tool    | Ruby                    | Ruby                   | Ruby , Perl , Python   |
-| Install them before you continue | Perl                    |                        | Requests (for python ) |
-|                                  | Requests (for python )  |                        |                        |
-+----------------------------------+-------------------------+------------------------+------------------------+
-""")
-    upc=raw_input("Do you have what you need to run PenBox ? Y/N : ")
-    if upc in yes:
-        menu()
-    else:
-        print("Google What you need or contact me on fb.com/CEH.TN ")
-        print("BYE ^^")
-        sys.exit();
-def begin():
-    try:
-        import requests
-        update()
-    except:
-        os.system("pip install requests")
 ############################
 #begin :D 
 if __name__ == "__main__":
-  begin()
+    menu()
